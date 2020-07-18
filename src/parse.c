@@ -5,7 +5,7 @@
 t_uc g_f = 0;
 t_title g_title;
 
-void 	parse_file(char* file_name, t_nodes **nodes, t_relations **relations)
+void 	parse_file(char* file_name, t_nodes **nodes)
 {
     int fd;
     char *line = NULL;
@@ -17,7 +17,7 @@ void 	parse_file(char* file_name, t_nodes **nodes, t_relations **relations)
         if (parse_title(line))
             ;
         else
-            parse_switch(line, nodes, relations);
+            parse_switch(line, nodes);
         ft_memdel((void **)&line);
     }
     if (!(g_f & (F_START | F_END)))
@@ -62,7 +62,7 @@ int		parse_title(char *line)
     return (1);
 }
 
-void 	parse_switch(char *line, t_nodes **nodes, t_relations **relations)
+void 	parse_switch(char *line, t_nodes **nodes)
 {
     if (g_title == TITLE_START)
     {
@@ -82,7 +82,7 @@ void 	parse_switch(char *line, t_nodes **nodes, t_relations **relations)
     }
     else if (g_title == RELATION)
     {
-       parse_section_relation(line, *nodes, relations);
+       parse_section_relation(line, nodes);
     }
 }
 
@@ -94,12 +94,7 @@ void 	parse_section_node(char *line, t_nodes **nodes)
     parse_line_node(line, w_node);
     if (!(node = (t_nodes *)ft_memalloc(sizeof(t_nodes))))
         exit(1);
-    node_init(node, g_title);
-    if (*w_node[N_NAME] == 'L' || *w_node[N_NAME] == '#')
-        print_error();
-    node->name = w_node[N_NAME];
-    node->point.x = ft_atoi(w_node[N_X]);
-    node->point.y = ft_atoi(w_node[N_Y]);
+    node_init(node, w_node, g_title);
     if (g_title == TITLE_START)
         nodes_front(nodes, node);
     else
@@ -139,19 +134,31 @@ void 	parse_line_node(char *line, char *w_node[])
     vector_destroy(&tmp);
 }
 
-void 	parse_section_relation(char *line, t_nodes *nodes, t_relations **relations)
+void 	parse_section_relation(char *line, t_nodes **nodes)
 {
     char *w_relation[R_SIZE];
-    t_relations *relation;
+    t_nodes *n_from;
+    t_nodes *n_to;
+    t_relations *r_from;
+    t_relations *r_to;
 
     parse_line_relation(line, w_relation);
-    if (!(relation = (t_relations *)ft_memalloc(sizeof(t_relations))))
+    if (!(r_from = (t_relations *)ft_memalloc(sizeof(t_relations))))
         exit(1);
-    if (!(relation->to = node_search(nodes, w_relation[R_NODE_2])))
+    if (!(r_to = (t_relations *)ft_memalloc(sizeof(t_relations))))
+        exit(1);
+    if (!(n_from = node_search(*nodes, w_relation[R_FROM])))
         print_error();
-    relation->relation_weight = 0;
-    relations_second(relations, relation);
-    relation->start = (*relations);
+    if (!(n_to = node_search(*nodes, w_relation[R_TO])))
+        print_error();
+    r_from->relation_weight = 1;
+    r_to->relation_weight = 1;
+    r_from->to = n_from;
+    r_to->to = n_to;
+    relations_back(n_from, r_to);
+    relations_back(n_to, r_from);
+    r_to->start = n_from->relations;
+    r_from->start = n_to->relations;
 }
 
 void 			parse_line_relation(char *line, char *w_relation[])

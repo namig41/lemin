@@ -21,8 +21,8 @@
 # define N_SIZE			3
 # define N_SEP 			' '
 
-# define R_NODE_1		0
-# define R_NODE_2		1
+# define R_FROM			0
+# define R_TO			1
 # define R_SIZE 		2
 # define R_SEP 			'-'
 
@@ -55,7 +55,6 @@ typedef struct			s_nodes
     t_uc				is_start;
     t_uc				is_finish;
     t_uc 				we_used_it;
-    struct s_relations 	*next_relations;
 	struct s_relations	*relations;
 	struct s_nodes		*prev;
 	struct s_nodes 		*start;				
@@ -70,15 +69,14 @@ int 					g_ants;
 
 int 			parse_title(char *line);
 void 			parse_number_ants(int fd);
-void 			parse_file(char* file_name, t_nodes **nodes, t_relations **relations);
-void 			parse_switch(char* file_name, t_nodes **nodes, t_relations **relations);
 void 			parse_section_node(char *line, t_nodes **nodes);
-void 			parse_section_relation(char *line, t_nodes *nodes, t_relations **list);
+void 			parse_file(char* file_name, t_nodes **nodes);
+void 			parse_switch(char* file_name, t_nodes **nodes);
+void 			parse_section_relation(char *line, t_nodes **nodes);
 void			parse_line_node(char *line, char *w_node[]);
 void 			parse_line_relation(char *line, char *w_relation[]);
 
-
-/*----------------------- ERROR --------------------------------------------*/
+/*----------------------- ERROR -------------------------------------------------*/
 
 void 			print_error(void);
 
@@ -89,18 +87,19 @@ void 			nodes_second(t_nodes **list, t_nodes *node);
 void 			nodes_back(t_nodes **list, t_nodes *node);
 void 			nodes_insert(t_nodes **list, t_nodes *node, size_t num);
 
+void 			node_init(t_nodes *node, char *w_node[], t_title name_title);
+t_nodes			*node_search(t_nodes *node, char *name);
+
 /*----------------------- RELATIOINS ----------------------------------------------*/
 
-void 			relations_front(t_relations **list, t_relations *relation);
-void			relations_second(t_relations **list, t_relations *relation);
-void 			relations_back(t_relations **list, t_relations *relation);
+void 			relations_front(t_nodes *nodes, t_relations *relation);
+void			relations_second(t_nodes *nodes, t_relations *relation);
+void 			relations_back(t_nodes *nodes, t_relations *relation);
+
+/*----------------------- OTHER ----------------------------------------------------*/
+
 
 void 			print_nodes(t_nodes *head);
 void 			print_relations(t_relations *head);
-
-/*----------------------- OTHER -------------------------------------------------*/
-
-void 			node_init(t_nodes *node, t_title name_title);
-t_nodes			*node_search(t_nodes *node, char *name);
 
 #endif

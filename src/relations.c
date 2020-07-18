@@ -1,38 +1,50 @@
 #include "lemin.h"
 
-void 		relations_front(t_relations **list, t_relations *relation)
+void 		relations_front(t_nodes *nodes, t_relations *relation)
 {
-    if (!*list)
+    t_relations *relations;
+
+    relations = nodes->relations;
+    if (!relations)
     {
-        *list = relation;
+        nodes->relations = relation;
         return ;
     }
-    relation->next = *list;
-    *list = relation;
+    relation->next = relations;
+    relations = relation;
 }
 
-void 		relations_second(t_relations **list, t_relations *relation)
+void 		relations_second(t_nodes *nodes, t_relations *relation)
 {
-    if (!*list)
+    t_relations *relations;
+
+    relations = nodes->relations;
+    if (!relations)
     {
-        *list = relation;
+        nodes->relations = relation;
         return ;
     }
-    relation->next = (*list)->next;
-    (*list)->next = relation;
+    relation->next = relations->next;
+    relations->next = relation;
 }
 
-void 		relations_back(t_relations **list, t_relations *relation)
+void 		relations_back(t_nodes *nodes, t_relations *relation)
 {
+    t_relations *relations;
     t_relations *head;
 
-    if (!*list)
+    relations = nodes->relations;
+    if (!relations)
     {
-        *list = relation;
+        nodes->relations = relation;
         return ;
     }
-    head = *list;
+    head = relations;
     while (head->next)
+    {
+        if (ft_strequ(head->to->name, relation->to->name))
+            print_error();
         head = head->next;
+    }
     head->next = relation;
 }
