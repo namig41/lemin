@@ -21,7 +21,7 @@ void 	parse_file(char* file_name, t_nodes **nodes)
         ft_memdel((void **)&line);
     }
     if (!(g_f & (F_START | F_END)))
-        print_error();
+        print_error(__LINE__);
     close(fd);
 }
 
@@ -32,12 +32,12 @@ void 	parse_number_ants(int fd)
     if (get_next_line(fd, &line) > 0)
     {
         if (parse_title(line))
-            print_error();
+            print_error(__LINE__);
         g_ants = ft_atoi(line);
         ft_memdel((void **)&line);
     }
     if (g_ants <= 0)
-        print_error();
+        print_error(__LINE__);
 }
 
 int		parse_title(char *line)
@@ -49,7 +49,7 @@ int		parse_title(char *line)
     else if (*line == COMMENT)
     {
         if (g_title == TITLE_START || g_title == TITLE_END)
-            print_error();
+            print_error(__LINE__);
         g_title = NODE;
     }
     else if (ft_strchr(line, R_SEP))
@@ -97,8 +97,10 @@ void 	parse_section_node(char *line, t_nodes **nodes)
     node_init(node, w_node, g_title);
     if (g_title == TITLE_START)
         nodes_front(nodes, node);
+    else if (g_title == TITLE_END)
+        nodes_back(nodes, node);
     else
-        nodes_second(nodes, node);
+        nodes_insert(nodes, node, g_f & F_START);
     node->start = (*nodes);
 }
 
@@ -114,7 +116,7 @@ void 	parse_line_node(char *line, char *w_node[])
     while (line[i] != '\0')
     {
         if (count >= N_SIZE || (count > 0 && !ft_isdigit(line[i]) && !ft_isescape(line[i])))
-            print_error();
+            print_error(__LINE__);
         if (ft_isescape(line[i]))
         {
             w_node[count] = ft_strdup((char *)tmp.data);
@@ -126,10 +128,7 @@ void 	parse_line_node(char *line, char *w_node[])
         i++;
     }
     if (count < N_SIZE - 1)
-    {
-        printf("%d\n", __LINE__);
-        print_error();
-    }
+        print_error(__LINE__);
     w_node[count] = ft_strdup((char *)tmp.data);
     vector_destroy(&tmp);
 }
@@ -148,10 +147,12 @@ void 	parse_section_relation(char *line, t_nodes **nodes)
     if (!(r_to = (t_relations *)ft_memalloc(sizeof(t_relations))))
         exit(1);
     if (!(n_from = node_search(*nodes, w_relation[R_FROM])))
-        print_error();
+        print_error(__LINE__);
     if (!(n_to = node_search(*nodes, w_relation[R_TO])))
-        print_error();
+        print_error(__LINE__);
+    r_from->active = 1;
     r_from->relation_weight = 1;
+    r_to->active = 1;
     r_to->relation_weight = 1;
     r_from->to = n_from;
     r_to->to = n_to;
@@ -173,7 +174,7 @@ void 			parse_line_relation(char *line, char *w_relation[])
     while (line[i] != '\0')
     {
         if (count >= R_SIZE || ft_isescape(line[i]))
-            print_error();
+            print_error(__LINE__);
         if (line[i] == R_SEP)
         {
             w_relation[count] = ft_strdup((char *)tmp.data);
@@ -185,7 +186,7 @@ void 			parse_line_relation(char *line, char *w_relation[])
         i++;
     }
     if (count < R_SIZE - 1)
-        print_error();
+        print_error(__LINE__);
     w_relation[count] = ft_strdup((char *)tmp.data);
     vector_destroy(&tmp);
 }

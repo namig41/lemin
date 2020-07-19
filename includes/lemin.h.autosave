@@ -60,8 +60,8 @@ typedef struct			s_nodes
     t_uc 				out;
     t_uc				need_delete;
     int					weight;
-    struct s_nodes		*next;
     t_point 			point;
+    struct s_nodes		*next;
     struct s_nodes		*tmp;
     struct s_relations	*relations;
 	struct s_nodes		*prev;

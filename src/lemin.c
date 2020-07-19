@@ -8,7 +8,7 @@ int main(int argc, char* argv[])
 
     parse_file(argv[1], &nodes);
 
-    printf("Number ants: %d\n", g_ants);
+    printf("%d\n", g_ants);
     print_nodes(nodes);
 
     return (0);

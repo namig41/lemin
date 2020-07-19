@@ -43,7 +43,7 @@ void 		relations_back(t_nodes *nodes, t_relations *relation)
     while (head->next)
     {
         if (ft_strequ(head->to->name, relation->to->name))
-            print_error();
+            print_error(__LINE__);
         head = head->next;
     }
     head->next = relation;
