@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.1...3.10)
 
 project(lemin LANGUAGES C)
 
-
 add_library(libft STATIC
 			libft/conversion/ft_atoi.c
 			libft/conversion/ft_lltoa.c
@@ -125,7 +124,10 @@ set(LEMIN_SRC
     src/nodes.c
     src/relations.c
     src/parse.c
-	src/other.c)
+	src/other.c
+	src/bellman_ford.c
+	src/refresh.c
+		)
 
 
 include_directories("includes/" "libft/includes/")

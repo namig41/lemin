@@ -13,7 +13,7 @@
 
 # define F_START 		(1 << 0)
 # define F_END			(1 << 1)
-# define F_FIRST		(1 << 2)
+//# define F_FIRST		(1 << 2)
 
 # define N_NAME 		0
 # define N_X 			1
@@ -55,13 +55,13 @@ typedef struct			s_nodes
 	char 				*name;
     t_uc				is_start;
     t_uc				is_finish;
-    t_uc 				we_used_it;
     t_uc 				in;
     t_uc 				out;
     t_uc				need_delete;
     int					weight;
+	t_point 			point;
+
     struct s_nodes		*next;
-    t_point 			point;
     struct s_nodes		*tmp;
     struct s_relations	*relations;
 	struct s_nodes		*prev;
@@ -106,6 +106,10 @@ void 			relations_back(t_nodes *nodes, t_relations *relation);
 
 
 void 			print_nodes(t_nodes *head);
-void 			print_relations(t_relations *head);
+
+/*----------------------- ALGORITHM ------------------------------------------------*/
+
+void			bellman_ford(t_nodes *nodes);
+void 			refresh(t_nodes *nodes);
 
 #endif
