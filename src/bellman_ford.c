@@ -43,7 +43,7 @@ void search_min_wights(t_nodes *node)
 	{
 		// если node = макс инт, то из этой вершины мы уж точно не придем никуда дешево, скипаем это вершину
 		relations = node->relations->start;
-		if (node->weight > 10000 || !relations)
+		if (node->weight >= 1000 || !relations)
 		{
 			if (!node->next)
 				break;
@@ -53,11 +53,28 @@ void search_min_wights(t_nodes *node)
 		// TODO поведение при пересечении
 		if (node->tmp)
 		{
+			// TODO вот тут странно. Надо продумать поведение при 'IN' и при 'OUT'
 			if (node->in && node->tmp->weight > node->weight - 1)
 			{
 				node->tmp->weight = node->weight - 1;
 				node->tmp->prev = node;
+
 			}
+			if (node->in)
+			{
+				node = node->next;
+				continue;
+			}
+//			else if (node->out && node->tmp->weight > node->weight)
+//			{
+//				node->tmp->weight = node->weight;
+//				node->tmp->prev = node;
+//			}
+//			else if (node->tmp->weight > node->weight - 1)
+//			{
+//				node->tmp->weight = node->weight - 1;
+//				node->tmp->prev = node;
+//			}
 		}
 
 		while (relations)

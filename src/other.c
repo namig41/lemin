@@ -8,13 +8,24 @@ void 		print_nodes(t_nodes *head)
 
     while (head)
     {
-        printf("%s %d %d\n", head->name, head->point.x, head->point.y);
+        printf("\nNode: %s%s%s\nRelations: ", head->name, (head->out) ? "(OUT)" : "", (head->in) ? "(IN)" : "");
         r = head->relations;
+        if (head->tmp != NULL)
+		{
+			printf("%s", head->tmp->name);
+			if (head->tmp->in)
+				printf("(IN)-");
+			if (head->tmp->out)
+				printf("(OUT)-");
+		}
+
         while (r)
         {
-            printf("%s%c", r->to->name, (r->next) ? '-' : '\n');
+        	if (r->active)
+            	printf("%s%s%s%c", r->to->name, (r->to->out) ? "(OUT)" : "", (r->to->in) ? "(IN)" : "",(r->next && r->next->active) ? '-' : '\n');
             r = r->next;
         }
+
         head = head->next;
     }
 }

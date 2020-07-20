@@ -68,6 +68,8 @@ typedef struct			s_nodes
 	struct s_nodes 		*start;				
 }						t_nodes;
 
+
+
 int 					g_ants;
 
 
@@ -104,12 +106,13 @@ void 			relations_back(t_nodes *nodes, t_relations *relation);
 
 /*----------------------- OTHER ----------------------------------------------------*/
 
-
 void 			print_nodes(t_nodes *head);
 
 /*----------------------- ALGORITHM ------------------------------------------------*/
 
 void			bellman_ford(t_nodes *nodes);
 void 			refresh(t_nodes *nodes);
+void 			clean_path(t_nodes *nodes);
+void 			delete_tmp_links(t_nodes *nodes);
 
 #endif

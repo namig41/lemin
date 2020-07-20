@@ -3,11 +3,16 @@
 
 void shortest_way(t_nodes *nodes)
 {
-	while (!nodes->is_finish) {
+	while (!nodes->is_finish)
 		nodes = nodes->next;
-	}
 	while (nodes) {
+
 		ft_putstr(nodes->name);
+		if (nodes->out)
+			ft_putstr("(OUT)");
+		if (nodes->in)
+			ft_putstr("(IN)");
+		ft_putendl("");
 		if (!nodes->prev)
 			break;
 		nodes = nodes->prev;
@@ -89,6 +94,36 @@ void add_in_out(t_nodes *nodes) {
 	nodes = nodes->start;
 }
 
+int is_cross(t_nodes *nodes) {
+	t_nodes *node;
+	int cross = 0;
+
+	node = nodes->start;
+	while (!node->is_finish)
+		node = node->next;
+	while (node) {
+
+		if (node->out)
+		{
+			t_nodes *first = node->tmp;
+			t_nodes *second = node->prev;
+			while (first && first->relations && first->relations->to != second)
+				first->relations = first->relations->next;
+			first->relations->need_delete = 1;
+			first->relations = first->relations->start;
+
+			while (second->relations && second->relations->to != first)
+				second->relations = second->relations->next;
+			second->relations->need_delete = 1;
+			second->relations = second->relations->start;
+			cross = 1;
+		}
+
+		node = node->prev;
+	}
+	return cross;
+}
+
 int main(int argc, char* argv[])
 {
     t_nodes		*nodes = NULL;
@@ -98,14 +133,40 @@ int main(int argc, char* argv[])
     printf("%d\n", g_ants);
     print_nodes(nodes);
 
-	bellman_ford(nodes);
-	shortest_way(nodes);
+    t_nodes *finish_node;
+    finish_node = nodes->start;
+    while (!finish_node->is_finish)
+		finish_node = finish_node->next;
 
-	change_direction(nodes);
-	add_in_out(nodes);
-	refresh(nodes);
 
-	bellman_ford(nodes);
-	shortest_way(nodes);
+    while(1)
+	{
+		ft_putstr("\nITER");
+		bellman_ford(nodes);
+		ft_putstr("\nPAAATH:    \n");
+		shortest_way(nodes);
+
+
+		if (finish_node->weight >= 1000)
+			break;
+
+		if (is_cross(nodes)) {
+			refresh(nodes);
+			continue;
+		}
+
+		ft_putstr("\n");
+
+		change_direction(nodes);
+
+		//print_nodes(nodes);
+		ft_putstr("------------------");
+		add_in_out(nodes);
+		print_nodes(nodes);
+		//ft_putstr("------------------");
+		clean_path(nodes);
+		ft_putendl("");
+		//print_nodes(nodes);
+	}
     return (0);
 }
