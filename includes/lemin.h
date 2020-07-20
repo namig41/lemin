@@ -68,7 +68,20 @@ typedef struct			s_nodes
 	struct s_nodes 		*start;				
 }						t_nodes;
 
+typedef struct 			s_paths
+{
+	int					count;
+	struct s_paths		*start;
+	struct s_paths		*next;
+	struct s_path		*path;
+}						t_paths;
 
+typedef struct 			s_path
+{
+	char 				*name;
+	struct s_path		*start;
+	struct s_path		*next;
+}						t_path;
 
 int 					g_ants;
 
