@@ -60,6 +60,7 @@ typedef struct			s_nodes
     t_uc				need_delete;
     int					weight;
 	t_point 			point;
+	int					lem_num;
 
     struct s_nodes		*next;
     struct s_nodes		*tmp;
@@ -131,9 +132,20 @@ void 			print_nodes(t_nodes *head);
 
 /*----------------------- ALGORITHM ------------------------------------------------*/
 
+void 			suurballe(t_nodes *nodes, t_options *options);
 void			bellman_ford(t_nodes *nodes);
 void 			refresh(t_nodes *nodes);
 void 			clean_path(t_nodes *nodes);
 void 			delete_tmp_links(t_nodes *nodes);
+void			clean_memory(t_options **options, t_nodes **nodes);
+
+/*------------------------- OUTPUT --------------------------------------------------*/
+
+t_options	*choose_ways(t_options *options);
+
+/*					need delete							*/
+void	add_option(t_options **options);
+void 	print_lems(t_paths *ways);
+void	print_shortest_way(t_nodes *nodes);
 
 #endif
