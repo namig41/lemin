@@ -4,6 +4,7 @@
 # include <limits.h>
 # include "libft.h"
 # include "vector.h"
+# include "get_next_line.h"
 
 # define START 			"##start"
 # define END 			"##end"
@@ -60,6 +61,7 @@ typedef struct			s_nodes
     t_uc				need_delete;
     int					weight;
 	t_point 			point;
+	int					lem_num;
 
     struct s_nodes		*next;
     struct s_nodes		*tmp;
@@ -67,6 +69,29 @@ typedef struct			s_nodes
 	struct s_nodes		*prev;
 	struct s_nodes 		*start;				
 }						t_nodes;
+
+typedef struct			s_options
+{
+	int					paths_count;
+	struct s_paths		*paths;
+	struct s_options	*start;
+	struct s_options	*next;
+}						t_options;
+
+typedef struct 			s_paths
+{
+	int					nodes_count;
+	struct s_paths		*start;
+	struct s_paths		*next;
+	struct s_nodes		**path;
+}						t_paths;
+
+//typedef struct 			s_path
+//{
+//	char 				*name;
+//	struct s_path		*start;
+//	struct s_path		*next;
+//}						t_path;
 
 int 					g_ants;
 
@@ -104,12 +129,28 @@ void 			relations_back(t_nodes *nodes, t_relations *relation);
 
 /*----------------------- OTHER ----------------------------------------------------*/
 
-
 void 			print_nodes(t_nodes *head);
 
 /*----------------------- ALGORITHM ------------------------------------------------*/
 
+void 			suurballe(t_nodes *nodes, t_options *options);
 void			bellman_ford(t_nodes *nodes);
 void 			refresh(t_nodes *nodes);
+void 			clean_path(t_nodes *nodes);
+void 			delete_tmp_links(t_nodes *nodes);
+void			clean_memory(t_options **options, t_nodes **nodes);
+
+/*------------------------- OUTPUT --------------------------------------------------*/
+
+t_options	*choose_ways(t_options *options);
+
+/*					need delete							*/
+void	add_option(t_options **options);
+void 	print_lems(t_paths *ways);
+void	print_shortest_way(t_nodes *nodes);
+void	delete_relations(t_nodes **nodes);
+int		is_cross(t_nodes *nodes);
+void	add_in_out(t_nodes *nodes);
+void	change_direction(t_nodes *nodes);
 
 #endif
