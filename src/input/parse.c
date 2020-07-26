@@ -1,18 +1,15 @@
 #include "lemin.h"
 #include <fcntl.h>
-#include <stdio.h>
 
 t_uc g_f = 0;
 t_title g_title;
 
-void 	parse_file(char* file_name, t_nodes **nodes)
+void 	parse_file(t_nodes **nodes)
 {
-    int fd;
-    char *line = NULL;
+    char *line;
 
-    fd = open(file_name, O_RDONLY);
-    parse_number_ants(fd);
-    while (get_next_line(fd, &line) > 0)
+    parse_number_ants();
+    while (get_next_line(STDIN_FILENO, &line) > 0)
     {
         if (parse_title(line))
             ;
@@ -21,23 +18,21 @@ void 	parse_file(char* file_name, t_nodes **nodes)
         ft_memdel((void **)&line);
     }
     if (!(g_f & (F_START | F_END)))
-        print_error(__LINE__);
-    close(fd);
+        print_error();
 }
 
-void 	parse_number_ants(int fd)
+void 	parse_number_ants(void)
 {
     char *line;
 
-    if (get_next_line(fd, &line) > 0)
+    if (get_next_line(STDIN_FILENO, &line) > 0)
     {
-        if (parse_title(line))
-            print_error(__LINE__);
+        if (ft_isnumber(line, ft_strlen(line)))
         g_ants = ft_atoi(line);
         ft_memdel((void **)&line);
     }
     if (g_ants <= 0)
-        print_error(__LINE__);
+        print_error();
 }
 
 int		parse_title(char *line)
@@ -49,7 +44,7 @@ int		parse_title(char *line)
     else if (*line == COMMENT)
     {
         if (g_title == TITLE_START || g_title == TITLE_END)
-            print_error(__LINE__);
+            print_error();
         g_title = NODE;
     }
     else if (ft_strchr(line, R_SEP))
@@ -106,30 +101,32 @@ void 	parse_section_node(char *line, t_nodes **nodes)
 
 void 	parse_line_node(char *line, char *w_node[])
 {
+    char prev_c;
     size_t i;
     size_t count;
     t_vector tmp;
 
     i = 0;
     count = 0;
+    prev_c = line[0];
     vector_init(&tmp, 1, sizeof(char));
     while (line[i] != '\0')
     {
-        if (count >= N_SIZE || (count > 0 && !ft_isdigit(line[i]) && !ft_isescape(line[i])))
-            print_error(__LINE__);
-        if (ft_isescape(line[i]))
+        if (ft_isalnum(line[i]))
+            vector_push_back_data(&tmp, (void *)(line + i));
+        if ((ft_isalnum(prev_c) && ft_isescape(line[i])) || (tmp.size > 0 && line[i + 1] == '\0'))
         {
+            if (count > 0 && !ft_isnumber((const char *)tmp.data, tmp.size))
+                print_error();
             w_node[count] = ft_strdup((char *)tmp.data);
             vector_clear(&tmp);
             count++;
         }
-        else
-            vector_push_back_data(&tmp, (void *)(line + i));
+        prev_c = line[i];
         i++;
     }
-    if (count < N_SIZE - 1)
-        print_error(__LINE__);
-    w_node[count] = ft_strdup((char *)tmp.data);
+    if (count != N_SIZE)
+        print_error();
     vector_destroy(&tmp);
 }
 
@@ -147,9 +144,9 @@ void 	parse_section_relation(char *line, t_nodes **nodes)
     if (!(r_to = (t_relations *)ft_memalloc(sizeof(t_relations))))
         exit(1);
     if (!(n_from = node_search(*nodes, w_relation[R_FROM])))
-        print_error(__LINE__);
+        print_error();
     if (!(n_to = node_search(*nodes, w_relation[R_TO])))
-        print_error(__LINE__);
+        print_error();
     r_from->active = 1;
     r_from->relation_weight = 1;
     r_to->active = 1;
@@ -164,29 +161,35 @@ void 	parse_section_relation(char *line, t_nodes **nodes)
 
 void 			parse_line_relation(char *line, char *w_relation[])
 {
+    t_uc flag;
     size_t i;
     size_t count;
     t_vector tmp;
 
     i = 0;
+    flag = 0;
     count = 0;
     vector_init(&tmp, 1, sizeof(char));
     while (line[i] != '\0')
     {
-        if (count >= R_SIZE || ft_isescape(line[i]))
-            print_error(__LINE__);
-        if (line[i] == R_SEP)
+        if (ft_isalnum(line[i]))
         {
-            w_relation[count] = ft_strdup((char *)tmp.data);
+            if (flag)
+                print_error();
+            vector_push_back_data(&tmp, (void *)(line + i));
+        }
+        if (tmp.size > 0 && ft_isescape(line[i]))
+            flag = 1;
+        if (line[i] == R_SEP || line[i + 1] == '\0')
+        {
+            w_relation[count] = ft_strdup(tmp.data);
             vector_clear(&tmp);
+            flag = 0;
             count++;
         }
-        else
-            vector_push_back_data(&tmp, (void *)(line + i));
         i++;
     }
-    if (count < R_SIZE - 1)
-        print_error(__LINE__);
-    w_relation[count] = ft_strdup((char *)tmp.data);
+    if (count != R_SIZE)
+        print_error();
     vector_destroy(&tmp);
 }

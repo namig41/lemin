@@ -2,11 +2,27 @@
 #define CANVAS_H
 
 #include <QWidget>
+#include <QPainter>
+#include <QGraphicsScene>
+#include <QGraphicsView>
+#include <QGraphicsItem>
+#include <QGraphicsSceneMouseEvent>
 
-class Canvas
+#include <QWheelEvent>
+
+class Canvas : public QGraphicsScene
 {
+    Q_OBJECT
+
+private:
+
 public:
-    Canvas();
+    explicit Canvas(QWidget *parent = 0);
+    ~Canvas();
+
+    void wheelEvent(QWheelEvent *event);
+    void mousePressEvent(QGraphicsSceneMouseEvent *event);
+
 };
 
 #endif // CANVAS_H

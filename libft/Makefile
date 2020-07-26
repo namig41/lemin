@@ -1,4 +1,3 @@
-  
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
@@ -117,7 +116,8 @@ FUN_CTYPE = \
 		ft_isalnum \
 		ft_isascii \
 		ft_isalpha \
-		ft_isescape
+		ft_isescape \
+		ft_isnumber
 
 FUN_DISPLAY = \
 		ft_putchar_fd \
@@ -179,4 +179,5 @@ fclean: clean
 re: fclean all
 
 compile: re
-	$(CC) main.c $(NAME) -I$(DIR_INC)
+	$(CC) main.c $(NAME) -I$(DIR_INC) 
+

@@ -1,13 +1,13 @@
 
 #include "lemin.h"
 
-int main(int argc, char* argv[])
+int main(void)
 {
     t_nodes		*nodes;
     t_options 	*options;
 
 	add_option(&options);
-	parse_file(argv[1], &nodes);
+	parse_file(&nodes);
 	suurballe(nodes, options);
 	options = choose_ways(options);
 	print_lems(options->paths);

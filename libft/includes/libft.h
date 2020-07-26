@@ -15,8 +15,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
-# define TRUE 1
-# define FALSE 0
 
 typedef unsigned char		t_uc;
 typedef long double			t_ld;
@@ -70,6 +68,7 @@ void						ft_striter(char *s, void (*f)(char *));
 void						ft_striteri(char *s,
 										void (*f)(unsigned int, char *));
 char						*ft_strnew(size_t size);
+char						*ft_strsub(char const *s, t_ui start, size_t len);
 
 /*
 ** --------------------------- CONVERSION -----------------------------
@@ -93,6 +92,7 @@ int							ft_isalnum(int c);
 int							ft_isalpha(int c);
 int							ft_isascii(int c);
 int							ft_isescape(int c);
+int 						ft_isnumber(const char *str, size_t len);
 
 /*
 ** --------------------------- MATH ---------------------------------
