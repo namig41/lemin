@@ -4,6 +4,7 @@
 # include <limits.h>
 # include "libft.h"
 # include "vector.h"
+# include "get_next_line.h"
 
 # define START 			"##start"
 # define END 			"##end"
@@ -147,5 +148,9 @@ t_options	*choose_ways(t_options *options);
 void	add_option(t_options **options);
 void 	print_lems(t_paths *ways);
 void	print_shortest_way(t_nodes *nodes);
+void	delete_relations(t_nodes **nodes);
+int		is_cross(t_nodes *nodes);
+void	add_in_out(t_nodes *nodes);
+void	change_direction(t_nodes *nodes);
 
 #endif

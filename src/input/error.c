@@ -1,4 +1,5 @@
 #include "lemin.h"
+#include <stdio.h>
 
 void	print_error(int line)
 {

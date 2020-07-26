@@ -1,7 +1,7 @@
 
-DIR_AlG			= ./src/algorithm
-DIR_INPUT		= ./src/input
-DIR_OUTPUT		= ./src/output
+DIR_AlG			= ./src/algorithm/
+DIR_INPUT		= ./src/input/
+DIR_OUTPUT		= ./src/output/
 DIR_INC			= ./includes/
 DIR_LIB			= ./libft/
 
@@ -25,15 +25,17 @@ FILE_OUTPUT		= \
 				print_lems
 
 SRC_LEMIN		= \
-				$(addprefix $(DIR_AlG), $(addsuffix .c, $(FILE_ALG)))
-				$(addprefix $(DIR_INPUT), $(addsuffix .c, $(FILE_INPUT)))
-				$(addprefix $(DIR_OUTPUT), $(addsuffix .c, $(FILE_OUTPUT)))
+				$(addprefix $(DIR_AlG), $(addsuffix .c, $(FILE_ALG))) \
+				$(addprefix $(DIR_INPUT), $(addsuffix .c, $(FILE_INPUT))) \
+				$(addprefix $(DIR_OUTPUT), $(addsuffix .c, $(FILE_OUTPUT))) \
+				./src/lemin.c
 
 
 OBJ_LEMIN 		= \
-				$(addsuffix .o, $(FILE_ALG))
-				$(addsuffix .o, $(FILE_INPUT))
-				$(addsuffix .o, $(FILE_OUTPUT))
+				$(addsuffix .o, $(FILE_ALG)) \
+				$(addsuffix .o, $(FILE_INPUT)) \
+				$(addsuffix .o, $(FILE_OUTPUT)) \
+				./lemin.o
 
 CC 	   			= gcc
 LEMIN 			= lemin

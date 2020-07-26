@@ -13,7 +13,5 @@ int main(int argc, char* argv[])
 	print_lems(options->paths);
 	clean_memory(&options, &nodes);
 
-
-
     return (0);
 }
