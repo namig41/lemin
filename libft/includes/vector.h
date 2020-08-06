@@ -123,7 +123,7 @@ int				vector_reallocate(t_vector *vector);
 ** --------------------------- PRIVATE -------------------
 */
 
-void			ft_vector_offset(t_vector *vector, size_t index,
+void			vector_offset(t_vector *vector, size_t index,
 								void *element, t_uc offset_flag);
 /*
 ** --------------------------- ALGORITHM ----------------

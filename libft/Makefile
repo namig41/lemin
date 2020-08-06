@@ -159,7 +159,7 @@ OBJ_ALL         = $(addsuffix .o, $(FUN_CONVERSION) $(FUN_MEMORY) $(FUN_STRINGS)
 CC              = gcc
 NAME            = libft.a
 #CFLAGS          = -Wall -Werror -Wextra -O2 -I$(DIR_INC)
-CFLAGS          = -O2 -I$(DIR_INC)
+CFLAGS          = -g -O2 -I$(DIR_INC)
 
 all: $(NAME)
 
