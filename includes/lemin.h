@@ -152,4 +152,6 @@ int		is_cross(t_nodes *nodes);
 void	add_in_out(t_nodes *nodes);
 void	change_direction(t_nodes *nodes);
 
+int g_fd;
+
 #endif

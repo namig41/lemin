@@ -2,15 +2,16 @@
 #include <fcntl.h>
 
 t_uc g_f = 0;
-t_title g_title;
+t_title g_title = NODE;
 
 void 	parse_file(t_nodes **nodes)
 {
     char *line;
 
     parse_number_ants();
-    while (get_next_line(STDIN_FILENO, &line) > 0)
+    while (get_next_line(g_fd, &line) > 0)
     {
+        ft_putendl(line);
         if (parse_title(line))
             ;
         else
@@ -25,7 +26,7 @@ void 	parse_number_ants(void)
 {
     char *line;
 
-    if (get_next_line(STDIN_FILENO, &line) > 0)
+    if (get_next_line(g_fd, &line) > 0)
     {
         if (ft_isnumber(line, ft_strlen(line)))
         g_ants = ft_atoi(line);
@@ -109,6 +110,7 @@ void 	parse_line_node(char *line, char *w_node[])
     i = 0;
     count = 0;
     prev_c = line[0];
+    tmp.data = NULL;
     vector_init(&tmp, 1, sizeof(char));
     while (line[i] != '\0')
     {
@@ -169,6 +171,7 @@ void 			parse_line_relation(char *line, char *w_relation[])
     i = 0;
     flag = 0;
     count = 0;
+    tmp.data = NULL;
     vector_init(&tmp, 1, sizeof(char));
     while (line[i] != '\0')
     {
