@@ -5,6 +5,7 @@
 # include "libft.h"
 # include "vector.h"
 # include "get_next_line.h"
+# include <fcntl.h>
 
 # define START 			"##start"
 # define END 			"##end"
@@ -27,44 +28,44 @@
 # define R_SEP 			'-'
 
 typedef enum 			e_title {
-      TITLE_START,
-      TITLE_END,
-      NODE,
-      RELATION
+	  TITLE_START,
+	  TITLE_END,
+	  NODE,
+	  RELATION
 } 						t_title;
 
 typedef struct 			s_point
 {
-    int 				x;
-    int 				y;
+	int 				x;
+	int 				y;
 }						t_point;
 
 typedef struct			s_relations
 {
-    t_uc 				active;
-    t_uc 				need_delete;
-    int					relation_weight;
-    struct s_nodes 		*to;
-    struct s_relations	*next;
-    struct s_relations	*start;
+	t_uc 				active;
+	t_uc 				need_delete;
+	int					relation_weight;
+	struct s_nodes 		*to;
+	struct s_relations	*next;
+	struct s_relations	*start;
 
 }						t_relations;
 
 typedef struct			s_nodes
 {
 	char 				*name;
-    t_uc				is_start;
-    t_uc				is_finish;
-    t_uc 				in;
-    t_uc 				out;
-    t_uc				need_delete;
-    int					weight;
-    int					lem_num;
-    t_point 			point;
+	t_uc				is_start;
+	t_uc				is_finish;
+	t_uc 				in;
+	t_uc 				out;
+	t_uc				need_delete;
+	int					weight;
+	int					lem_num;
+	t_point 			point;
 
-    struct s_nodes		*next;
-    struct s_nodes		*tmp;
-    struct s_relations	*relations;
+	struct s_nodes		*next;
+	struct s_nodes		*tmp;
+	struct s_relations	*relations;
 	struct s_nodes		*prev;
 	struct s_nodes 		*start;				
 }						t_nodes;
@@ -99,12 +100,18 @@ int 					g_ants;
 
 int 			parse_title(char *line, t_title *title);
 void 			parse_number_ants(void);
-void 			parse_section_node(char *line, t_nodes **nodes, t_title *title);
 void 			parse_file(t_nodes **nodes);
-void 			parse_switch(char* file_name, t_nodes **nodes, t_title *title);
+void 			parse_switch(char* file_name, t_nodes **nodes, t_title *title, t_uc *f);
+
+/*---------------------- PARSE NODES --------------------------------------------------*/
+
+void 			parse_section_node(char *line, t_nodes **nodes, t_title *title, t_uc *f);
+void			parse_line_node(char *line, char **w_node[]);
+
+/*---------------------- PARSE RELATIONS --------------------------------------------------*/
+
 void 			parse_section_relation(char *line, t_nodes **nodes);
-void			parse_line_node(char *line, char *w_node[]);
-void 			parse_line_relation(char *line, char *w_relation[]);
+void 			parse_line_relation(char *line, char **w_relation[]);
 
 /*----------------------- ERROR -------------------------------------------------*/
 
@@ -113,7 +120,6 @@ void 			print_error(void);
 /*----------------------- NODES --------------------------------------------------*/
 
 void 			nodes_front(t_nodes **list, t_nodes *node);
-void 			nodes_second(t_nodes **list, t_nodes *node);
 void 			nodes_back(t_nodes **list, t_nodes *node);
 void 			nodes_insert(t_nodes **list, t_nodes *node, size_t num);
 
@@ -122,13 +128,12 @@ t_nodes			*node_search(t_nodes *node, char *name);
 
 /*----------------------- RELATIOINS ----------------------------------------------*/
 
-void 			relations_front(t_nodes *nodes, t_relations *relation);
-void			relations_second(t_nodes *nodes, t_relations *relation);
 void 			relations_back(t_nodes *nodes, t_relations *relation);
 
 /*----------------------- OTHER ----------------------------------------------------*/
 
-void 			print_nodes(t_nodes *head);
+void			print_nodes(t_nodes *head);
+size_t			word_count(char **ar);
 
 /*----------------------- ALGORITHM ------------------------------------------------*/
 
@@ -141,7 +146,7 @@ void			clean_memory(t_options **options, t_nodes **nodes);
 
 /*------------------------- OUTPUT --------------------------------------------------*/
 
-t_options	*choose_ways(t_options *options);
+t_options		*choose_ways(t_options *options);
 
 /*					need delete							*/
 void	add_option(t_options **options);

@@ -18,6 +18,8 @@ FILE_INPUT		= \
 				nodes \
 				other \
 				parse \
+				parse_nodes \
+				parse_relations \
 				relations
 
 FILE_OUTPUT		= \
