@@ -1,5 +1,4 @@
 #include "node.h"
-#include <QDebug>
 
 Node::Node() :
     QGraphicsItem()

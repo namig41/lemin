@@ -1,9 +1,9 @@
-
 DIR_AlG			= ./src/algorithm/
 DIR_INPUT		= ./src/input/
 DIR_OUTPUT		= ./src/output/
 DIR_INC			= ./includes/
 DIR_LIB			= ./libft/
+DIR_OBJ 		= ./obj/
 
 FILE_ALG		= \
 				bellman_ford \
@@ -54,10 +54,12 @@ obj_lemin:
 
 lemin: lib obj_lemin
 	@$(CC) $(CFLAGS) -o $(LEMIN) $(OBJ_LEMIN) libft/libft.a
+	@mkdir -p $(DIR_OBJ)
+	@mv -f $(OBJ_LEMIN) $(DIR_OBJ)
 
 clean:
 	@make clean -C $(DIR_LIB)
-	@rm -f $(OBJ_LEMIN)
+	@rm -rf $(DIR_OBJ)
 	@rm -f libft.a
 
 fclean: clean

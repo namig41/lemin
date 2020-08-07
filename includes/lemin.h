@@ -59,8 +59,8 @@ typedef struct			s_nodes
     t_uc 				out;
     t_uc				need_delete;
     int					weight;
-	t_point 			point;
-	int					lem_num;
+    int					lem_num;
+    t_point 			point;
 
     struct s_nodes		*next;
     struct s_nodes		*tmp;
@@ -97,11 +97,11 @@ int 					g_ants;
 
 /*---------------------- PARSE --------------------------------------------------*/
 
-int 			parse_title(char *line);
+int 			parse_title(char *line, t_title *title);
 void 			parse_number_ants(void);
-void 			parse_section_node(char *line, t_nodes **nodes);
+void 			parse_section_node(char *line, t_nodes **nodes, t_title *title);
 void 			parse_file(t_nodes **nodes);
-void 			parse_switch(char* file_name, t_nodes **nodes);
+void 			parse_switch(char* file_name, t_nodes **nodes, t_title *title);
 void 			parse_section_relation(char *line, t_nodes **nodes);
 void			parse_line_node(char *line, char *w_node[]);
 void 			parse_line_relation(char *line, char *w_relation[]);
@@ -117,7 +117,7 @@ void 			nodes_second(t_nodes **list, t_nodes *node);
 void 			nodes_back(t_nodes **list, t_nodes *node);
 void 			nodes_insert(t_nodes **list, t_nodes *node, size_t num);
 
-void 			node_init(t_nodes *node, char *w_node[], t_title name_title);
+void 			node_init(t_nodes *node, char *w_node[], t_title *title);
 t_nodes			*node_search(t_nodes *node, char *name);
 
 /*----------------------- RELATIOINS ----------------------------------------------*/
