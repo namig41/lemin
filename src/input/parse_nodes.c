@@ -26,6 +26,8 @@ void			parse_section_node(char *line, t_nodes **nodes, t_title *title, t_uc *f)
 	node_init(node, w_node, title);
 	ft_memdel((void **)&w_node[N_X]);
 	ft_memdel((void **)&w_node[N_Y]);
+	if (node_cmp(*nodes, node))
+		print_error();
 	if (*title == TITLE_START)
 		nodes_front(nodes, node);
 	else if (*title == TITLE_END)
@@ -44,3 +46,15 @@ void 			parse_line_node(char *line, char **w_node[])
 		print_error();
 }
 
+int		node_cmp(t_nodes *head, t_nodes *node)
+{
+	while (head)
+	{
+		if (ft_strequ(head->name, node->name) ||
+			(head->point.x == node->point.x &&
+			head->point.y == node->point.y))
+			return (1);
+		head = head->next;
+	}
+	return (0);
+}

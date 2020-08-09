@@ -2,10 +2,9 @@
 # define FT_LEMIN_H
 
 # include <limits.h>
-# include "libft.h"
-# include "vector.h"
-# include "get_next_line.h"
 # include <fcntl.h>
+# include "libft.h"
+# include "get_next_line.h"
 
 # define START 			"##start"
 # define END 			"##end"
@@ -15,6 +14,8 @@
 
 # define F_START 		(1 << 0)
 # define F_END			(1 << 1)
+# define F_REL			(1 << 2)
+# define F_DD			(1 << 3)
 
 # define N_NAME 		0
 # define N_X 			1
@@ -119,11 +120,13 @@ void 			print_error(void);
 
 /*----------------------- NODES --------------------------------------------------*/
 
-void 			nodes_front(t_nodes **list, t_nodes *node);
-void 			nodes_back(t_nodes **list, t_nodes *node);
-void 			nodes_insert(t_nodes **list, t_nodes *node, size_t num);
-
 void 			node_init(t_nodes *node, char *w_node[], t_title *title);
+
+void 			nodes_front(t_nodes **nodes, t_nodes *node);
+void 			nodes_back(t_nodes **nodes, t_nodes *node);
+void 			nodes_insert(t_nodes **nodes, t_nodes *node, size_t num);
+
+int				node_cmp(t_nodes *nodes, t_nodes *node);
 t_nodes			*node_search(t_nodes *node, char *name);
 
 /*----------------------- RELATIOINS ----------------------------------------------*/

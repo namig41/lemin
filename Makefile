@@ -40,7 +40,7 @@ OBJ_LEMIN 		= \
 				./lemin.o
 
 CC 	   			= gcc
-LEMIN 			= lemin
+LEMIN 			= lem-in
 CHECKER 		= checker
 #CFLAGS 	   		= -Wall -Werror -Wextra -O2 -I$(DIR_INC) -I$(DIR_LIB)$(DIR_INC)
 CFLAGS 	   		=  -g -O2 -I$(DIR_INC) -I$(DIR_LIB)$(DIR_INC)

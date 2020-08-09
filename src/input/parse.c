@@ -12,6 +12,17 @@
 
 #include "lemin.h"
 
+inline int 		check_se(t_nodes *nodes)
+{
+	if (!nodes->relations)
+		return (1);
+	while (nodes->next)
+		nodes = nodes->next;
+	if (!nodes->relations)
+		return (1);
+	return (0);
+}
+
 void			parse_file(t_nodes **nodes)
 {
 	char		*line;
@@ -23,14 +34,23 @@ void			parse_file(t_nodes **nodes)
 	parse_number_ants();
 	while (get_next_line(g_fd, &line) > 0)
 	{
-		ft_putendl(line);
+		//ft_putendl(line);
 		if (parse_title(line, &title))
-			;
+		{
+			if (f & F_DD)
+				print_error();
+			f |= F_DD;
+		}
 		else
+		{
 			parse_switch(line, nodes, &title, &f);
+			f &= ~F_DD;
+		}
 		ft_memdel((void **)&line);
 	}
-	if (!(f & (F_START | F_END)))
+	if (!(f & F_START) || !(f & F_END) || !(f & F_REL))
+		print_error();
+	if (check_se(*nodes))
 		print_error();
 }
 
@@ -41,7 +61,7 @@ void			parse_number_ants(void)
 	if (get_next_line(g_fd, &line) > 0)
 	{
 		if (ft_isnumber(line, ft_strlen(line)))
-		g_ants = ft_atoi(line);
+			g_ants = ft_atoi(line);
 		ft_memdel((void **)&line);
 	}
 	if (g_ants <= 0)
@@ -56,7 +76,7 @@ int				parse_title(char *line, t_title *title)
 		*title = TITLE_END;
 	else if (*line == COMMENT)
 	{
-		if (*title == TITLE_START || *title == TITLE_END)
+		if (line[1] == COMMENT)
 			print_error();
 		*title = NODE;
 	}
@@ -74,12 +94,16 @@ void			parse_switch(char *line, t_nodes **nodes, t_title *title, t_uc *f)
 {
 	if (*title == TITLE_START)
 	{
+		if (*f & F_START)
+			print_error();
 		parse_section_node(line, nodes, title, f);
 		*title = NODE;
 		*f |= F_START;
 	}
 	else if (*title == TITLE_END)
 	{
+		if (*f & F_END)
+			print_error();
 		parse_section_node(line, nodes, title, f);
 		*title = NODE;
 		*f |= F_END;
@@ -87,5 +111,8 @@ void			parse_switch(char *line, t_nodes **nodes, t_title *title, t_uc *f)
 	else if (*title == NODE)
 		parse_section_node(line, nodes, title, f);
 	else if (*title == RELATION)
-	   parse_section_relation(line, nodes);
+	{
+		parse_section_relation(line, nodes);
+		*f |= F_REL;
+	}
 }

@@ -12,8 +12,8 @@
 
 #include "lemin.h"
 
-void	print_error(void)
+inline void	print_error(void)
 {
-	write(STDERR_FILENO, ERR, sizeof(ERR));
+	ft_putendl(ERR);
 	exit(1);
 }
