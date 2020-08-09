@@ -103,7 +103,8 @@ int 					g_ants;
 void 			parse_ants(void);
 void 			parse_file(t_nodes **nodes);
 void 			parse_switch(char* line, t_nodes **nodes, t_title *title, t_uc *f);
-int 			parse_title(char *line, t_nodes *nodes, t_title *title, t_uc *f);
+int 			parse_title_1(char *line, t_nodes *nodes, t_title *title, t_uc *f);
+int 			parse_title_2(char *line, t_nodes *nodes, t_title *title, t_uc *f);
 
 /*---------------------- PARSE NODES --------------------------------------------------*/
 

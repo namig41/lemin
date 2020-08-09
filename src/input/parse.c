@@ -14,17 +14,16 @@
 
 void			parse_file(t_nodes **nodes)
 {
-    t_uc        f;
+	t_uc		f;
 	char		*line;
 	t_title		title;
 
-    f = 0;
+	f = 0;
 	title = NODE;
 	parse_ants();
 	while (get_next_line(g_fd, &line) > 0)
 	{
-		f &= ~F_COMMENT;
-		if (parse_title(line, *nodes, &title, &f))
+		if (parse_title_1(line, *nodes, &title, &f))
 		{
 			if (f & F_DD)
 				print_error();
@@ -37,9 +36,8 @@ void			parse_file(t_nodes **nodes)
 		}
 		ft_memdel((void **)&line);
 	}
-	if (!(f & F_START) || !(f & F_END) || !(f & F_REL) || (f & F_COMMENT))
-		print_error();
-	if (valid_start_end(*nodes))
+	if (!(f & F_START) || !(f & F_END) || !(f & F_REL) || (f & F_COMMENT) ||
+		valid_start_end(*nodes))
 		print_error();
 }
 
@@ -57,13 +55,28 @@ void			parse_ants(void)
 		print_error();
 }
 
-int				parse_title(char *line, t_nodes *nodes, t_title *title, t_uc *f)
+int				parse_title_1(char *line, t_nodes *nodes,
+								t_title *title, t_uc *f)
 {
 	if (ft_strequ(line, START))
+	{
 		*title = TITLE_START;
+		*f &= ~F_COMMENT;
+	}
 	else if (ft_strequ(line, END))
+	{
 		*title = TITLE_END;
-	else if (*line == COMMENT)
+		*f &= ~F_COMMENT;
+	}
+	else if (!parse_title_2(line, nodes, title, f))
+		return (0);
+	return (1);
+}
+
+int				parse_title_2(char *line, t_nodes *nodes,
+									t_title *title, t_uc *f)
+{
+	if (*line == COMMENT)
 	{
 		if (line[1] == COMMENT || valid_line_node(line + 1) ||
 								valid_line_relation(line + 1, nodes))
@@ -73,15 +86,21 @@ int				parse_title(char *line, t_nodes *nodes, t_title *title, t_uc *f)
 	}
 	else if (ft_strchr(line, R_SEP))
 	{
+		if (*f & F_COMMENT)
+			print_error();
 		*title = RELATION;
 		return (0);
 	}
 	else
+	{
+		*f &= ~F_COMMENT;
 		return (0);
+	}
 	return (1);
 }
 
-void			parse_switch(char *line, t_nodes **nodes, t_title *title, t_uc *f)
+void			parse_switch(char *line, t_nodes **nodes,
+								t_title *title, t_uc *f)
 {
 	if (*title == TITLE_START)
 	{

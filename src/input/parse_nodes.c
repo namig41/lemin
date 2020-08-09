@@ -12,10 +12,11 @@
 
 #include "lemin.h"
 
-void			parse_section_node(char *line, t_nodes **nodes, t_title *title, t_uc *f)
+void			parse_section_node(char *line, t_nodes **nodes,
+									t_title *title, t_uc *f)
 {
-	char 		**w_node;
-	t_nodes 	*node;
+	char		**w_node;
+	t_nodes		*node;
 
 	if (!(w_node = valid_line_node(line)))
 		print_error();

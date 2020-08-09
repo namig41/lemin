@@ -12,9 +12,9 @@
 
 #include "lemin.h"
 
-char 			**valid_line_node(char *line)
+char			**valid_line_node(char *line)
 {
-	char **w_node;
+	char		**w_node;
 
 	w_node = ft_strsplit(line, N_SEP);
 	if (word_count(w_node) != N_SIZE ||
@@ -26,18 +26,18 @@ char 			**valid_line_node(char *line)
 
 char			**valid_line_relation(char *line, t_nodes *nodes)
 {
-	char **w_relation;
+	char		**w_relation;
 
 	w_relation = ft_strsplit(line, R_SEP);
 	if (word_count(w_relation) != R_SIZE ||
-		ft_strequ(w_relation[0], w_relation[1]) ||
-		!node_search(nodes, w_relation[0]) ||
-		!node_search(nodes, w_relation[1]))
+		ft_strequ(w_relation[R_FROM], w_relation[R_TO]) ||
+		!node_search(nodes, w_relation[R_FROM]) ||
+		!node_search(nodes, w_relation[R_TO]))
 		return (NULL);
 	return (w_relation);
 }
 
-int 		valid_start_end(t_nodes *nodes)
+int				valid_start_end(t_nodes *nodes)
 {
 	if (!nodes->relations)
 		return (1);
@@ -48,7 +48,7 @@ int 		valid_start_end(t_nodes *nodes)
 	return (0);
 }
 
-int		valid_node_cmp(t_nodes *head, t_nodes *node)
+int				valid_node_cmp(t_nodes *head, t_nodes *node)
 {
 	while (head)
 	{

@@ -42,10 +42,10 @@ void			print_nodes(t_nodes *head)
 	}
 }
 
-inline size_t	word_count(char **ar)
+size_t			word_count(char **ar)
 {
 	size_t		i;
-	
+
 	i = 0;
 	while (ar[i])
 		i++;

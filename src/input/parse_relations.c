@@ -12,23 +12,22 @@
 
 #include "lemin.h"
 
-void 			parse_section_relation(char *line, t_nodes **nodes)
+void			parse_section_relation(char *line, t_nodes **nodes)
 {
 	char		**w_relation;
-	t_nodes 	*n_from;
-	t_nodes 	*n_to;
+	t_nodes		*n_from;
+	t_nodes		*n_to;
 	t_relations *r_from;
 	t_relations *r_to;
 
 	if (!(w_relation = valid_line_relation(line, *nodes)))
 		print_error();
-	 if (!(r_from = (t_relations *)ft_memalloc(sizeof(t_relations))))
-		 exit(1);
+	if (!(r_from = (t_relations *)ft_memalloc(sizeof(t_relations))))
+		exit(1);
 	if (!(r_to = (t_relations *)ft_memalloc(sizeof(t_relations))))
 		exit(1);
-	if (!(n_from = node_search(*nodes, w_relation[R_FROM])))
-		print_error();
-	if (!(n_to = node_search(*nodes, w_relation[R_TO])))
+	if (!(n_from = node_search(*nodes, w_relation[R_FROM])) ||
+			!(n_to = node_search(*nodes, w_relation[R_TO])))
 		print_error();
 	r_from->active = 1;
 	r_from->relation_weight = 1;
