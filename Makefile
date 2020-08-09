@@ -20,7 +20,8 @@ FILE_INPUT		= \
 				parse \
 				parse_nodes \
 				parse_relations \
-				relations
+				relations \
+				validation
 
 FILE_OUTPUT		= \
 				choose_ways \

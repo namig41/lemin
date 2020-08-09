@@ -16,6 +16,7 @@
 # define F_END			(1 << 1)
 # define F_REL			(1 << 2)
 # define F_DD			(1 << 3)
+# define F_COMMENT		(1 << 4)
 
 # define N_NAME 		0
 # define N_X 			1
@@ -97,28 +98,34 @@ typedef struct 			s_paths
 int 					g_ants;
 
 
-/*---------------------- PARSE --------------------------------------------------*/
+/*----------------------- PARSE --------------------------------------------------------*/
 
-int 			parse_title(char *line, t_title *title);
-void 			parse_number_ants(void);
+void 			parse_ants(void);
 void 			parse_file(t_nodes **nodes);
-void 			parse_switch(char* file_name, t_nodes **nodes, t_title *title, t_uc *f);
+void 			parse_switch(char* line, t_nodes **nodes, t_title *title, t_uc *f);
+int 			parse_title(char *line, t_nodes *nodes, t_title *title, t_uc *f);
 
 /*---------------------- PARSE NODES --------------------------------------------------*/
 
 void 			parse_section_node(char *line, t_nodes **nodes, t_title *title, t_uc *f);
-void			parse_line_node(char *line, char **w_node[]);
 
 /*---------------------- PARSE RELATIONS --------------------------------------------------*/
 
 void 			parse_section_relation(char *line, t_nodes **nodes);
-void 			parse_line_relation(char *line, char **w_relation[]);
 
-/*----------------------- ERROR -------------------------------------------------*/
+
+/*---------------------- VALIDATION --------------------------------------------------*/
+
+char			**valid_line_node(char *line);
+char			**valid_line_relation(char *line, t_nodes *nodes);
+int				valid_start_end(t_nodes *nodes);
+int				valid_node_cmp(t_nodes *nodes, t_nodes *node);
+
+/*----------------------- ERROR ------------------------------------------------------*/
 
 void 			print_error(void);
 
-/*----------------------- NODES --------------------------------------------------*/
+/*----------------------- NODES ------------------------------------------------------*/
 
 void 			node_init(t_nodes *node, char *w_node[], t_title *title);
 
@@ -126,23 +133,25 @@ void 			nodes_front(t_nodes **nodes, t_nodes *node);
 void 			nodes_back(t_nodes **nodes, t_nodes *node);
 void 			nodes_insert(t_nodes **nodes, t_nodes *node, size_t num);
 
-int				node_cmp(t_nodes *nodes, t_nodes *node);
 t_nodes			*node_search(t_nodes *node, char *name);
 
-/*----------------------- RELATIOINS ----------------------------------------------*/
+/*----------------------- RELATIOINS -------------------------------------------------*/
 
 void 			relations_back(t_nodes *nodes, t_relations *relation);
 
-/*----------------------- OTHER ----------------------------------------------------*/
+/*----------------------- OTHER ------------------------------------------------------*/
 
 void			print_nodes(t_nodes *head);
 size_t			word_count(char **ar);
 
-/*----------------------- ALGORITHM ------------------------------------------------*/
+/*----------------------- ALGORITHM --------------------------------------------------*/
 
 void 			suurballe(t_nodes *nodes, t_options *options);
 void			bellman_ford(t_nodes *nodes);
 void 			refresh(t_nodes *nodes);
+
+/*------------------------- CLEAR MEMORY ----------------------------------------------*/
+
 void 			clean_path(t_nodes *nodes);
 void 			delete_tmp_links(t_nodes *nodes);
 void			clean_memory(t_options **options, t_nodes **nodes);

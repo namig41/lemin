@@ -10,11 +10,7 @@ r_6 9 3
 r_7 1 5
 r_8 4 8
 ##end
-#COMMENT_AFTER_ROOMS
 r_end 9 5
-r_end-r_6
-r_end-r_7
-r_start-r_2
 r_5-r_2
 r_6-r_1
 r_2-r_6

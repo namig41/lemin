@@ -20,7 +20,8 @@ void 			parse_section_relation(char *line, t_nodes **nodes)
 	t_relations *r_from;
 	t_relations *r_to;
 
-	parse_line_relation(line, &w_relation);
+	if (!(w_relation = valid_line_relation(line, *nodes)))
+		print_error();
 	 if (!(r_from = (t_relations *)ft_memalloc(sizeof(t_relations))))
 		 exit(1);
 	if (!(r_to = (t_relations *)ft_memalloc(sizeof(t_relations))))
@@ -39,11 +40,4 @@ void 			parse_section_relation(char *line, t_nodes **nodes)
 	relations_back(n_to, r_from);
 	r_to->start = n_from->relations;
 	r_from->start = n_to->relations;
-}
-
-void 			parse_line_relation(char *line, char **w_relation[])
-{
-	*w_relation = ft_strsplit(line, R_SEP);
-	if (word_count(*w_relation) != R_SIZE)
-		print_error();
 }

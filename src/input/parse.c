@@ -12,30 +12,19 @@
 
 #include "lemin.h"
 
-inline int 		check_se(t_nodes *nodes)
-{
-	if (!nodes->relations)
-		return (1);
-	while (nodes->next)
-		nodes = nodes->next;
-	if (!nodes->relations)
-		return (1);
-	return (0);
-}
-
 void			parse_file(t_nodes **nodes)
 {
+    t_uc        f;
 	char		*line;
 	t_title		title;
-    t_uc        f;
 
     f = 0;
 	title = NODE;
-	parse_number_ants();
+	parse_ants();
 	while (get_next_line(g_fd, &line) > 0)
 	{
-		//ft_putendl(line);
-		if (parse_title(line, &title))
+		f &= ~F_COMMENT;
+		if (parse_title(line, *nodes, &title, &f))
 		{
 			if (f & F_DD)
 				print_error();
@@ -48,13 +37,13 @@ void			parse_file(t_nodes **nodes)
 		}
 		ft_memdel((void **)&line);
 	}
-	if (!(f & F_START) || !(f & F_END) || !(f & F_REL))
+	if (!(f & F_START) || !(f & F_END) || !(f & F_REL) || (f & F_COMMENT))
 		print_error();
-	if (check_se(*nodes))
+	if (valid_start_end(*nodes))
 		print_error();
 }
 
-void			parse_number_ants(void)
+void			parse_ants(void)
 {
 	char		*line;
 
@@ -68,7 +57,7 @@ void			parse_number_ants(void)
 		print_error();
 }
 
-int				parse_title(char *line, t_title *title)
+int				parse_title(char *line, t_nodes *nodes, t_title *title, t_uc *f)
 {
 	if (ft_strequ(line, START))
 		*title = TITLE_START;
@@ -76,8 +65,10 @@ int				parse_title(char *line, t_title *title)
 		*title = TITLE_END;
 	else if (*line == COMMENT)
 	{
-		if (line[1] == COMMENT)
+		if (line[1] == COMMENT || valid_line_node(line + 1) ||
+								valid_line_relation(line + 1, nodes))
 			print_error();
+		*f |= F_COMMENT;
 		*title = NODE;
 	}
 	else if (ft_strchr(line, R_SEP))
