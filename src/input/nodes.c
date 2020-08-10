@@ -59,10 +59,10 @@ void		nodes_back(t_nodes **list, t_nodes *node)
 	head->next = node;
 }
 
-void		node_init(t_nodes *node, char *w_node[], t_title *title)
+void		node_init(t_nodes **nodes, t_nodes *node, char *w_node[], t_title *title)
 {
 	if (*w_node[N_NAME] == 'L' || *w_node[N_NAME] == '#')
-		print_error();
+		print_error(nodes);
 	node->name = w_node[N_NAME];
 	node->point.x = ft_atoi(w_node[N_X]);
 	node->point.y = ft_atoi(w_node[N_Y]);

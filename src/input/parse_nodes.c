@@ -19,14 +19,14 @@ void			parse_section_node(char *line, t_nodes **nodes,
 	t_nodes		*node;
 
 	if (!(w_node = valid_line_node(line)))
-		print_error();
+		print_error(nodes);
 	if (!(node = (t_nodes *)ft_memalloc(sizeof(t_nodes))))
 		exit(1);
-	node_init(node, w_node, title);
+	node_init(nodes, node, w_node, title);
 	ft_memdel((void **)&w_node[N_X]);
 	ft_memdel((void **)&w_node[N_Y]);
 	if (valid_node_cmp(*nodes, node))
-		print_error();
+		print_error(nodes);
 	if (*title == TITLE_START)
 		nodes_front(nodes, node);
 	else if (*title == TITLE_END)

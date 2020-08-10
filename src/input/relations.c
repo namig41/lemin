@@ -12,22 +12,22 @@
 
 #include "lemin.h"
 
-void			relations_back(t_nodes *nodes, t_relations *relation)
+void			relations_back(t_nodes **nodes, t_nodes *node, t_relations *relation)
 {
 	t_relations *relations;
 	t_relations *head;
 
-	relations = nodes->relations;
+	relations = node->relations;
 	if (!relations)
 	{
-		nodes->relations = relation;
+		node->relations = relation;
 		return ;
 	}
 	head = relations;
 	while (head->next)
 	{
 		if (ft_strequ(head->to->name, relation->to->name))
-			print_error();
+			print_error(nodes);
 		head = head->next;
 	}
 	head->next = relation;

@@ -12,8 +12,9 @@
 
 #include "lemin.h"
 
-inline void	print_error(void)
+inline void	print_error(t_nodes **nodes)
 {
+	free_nodes(nodes);
 	ft_putendl(ERR);
 	exit(1);
 }

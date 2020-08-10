@@ -29,7 +29,8 @@
 # define R_SIZE 		2
 # define R_SEP 			'-'
 
-typedef enum 			e_title {
+typedef enum 			e_title
+{
 	  TITLE_START,
 	  TITLE_END,
 	  NODE,
@@ -100,11 +101,11 @@ int 					g_ants;
 
 /*----------------------- PARSE --------------------------------------------------------*/
 
-void 			parse_ants(void);
+void 			parse_ants(t_nodes **nodes);
 void 			parse_file(t_nodes **nodes);
 void 			parse_switch(char* line, t_nodes **nodes, t_title *title, t_uc *f);
-int 			parse_title_1(char *line, t_nodes *nodes, t_title *title, t_uc *f);
-int 			parse_title_2(char *line, t_nodes *nodes, t_title *title, t_uc *f);
+int 			parse_title_1(char *line, t_nodes **nodes, t_title *title, t_uc *f);
+int 			parse_title_2(char *line, t_nodes **nodes, t_title *title, t_uc *f);
 
 /*---------------------- PARSE NODES --------------------------------------------------*/
 
@@ -124,11 +125,11 @@ int				valid_node_cmp(t_nodes *nodes, t_nodes *node);
 
 /*----------------------- ERROR ------------------------------------------------------*/
 
-void 			print_error(void);
+void 			print_error(t_nodes **nodes);
 
 /*----------------------- NODES ------------------------------------------------------*/
 
-void 			node_init(t_nodes *node, char *w_node[], t_title *title);
+void 			node_init(t_nodes **nodes, t_nodes *node, char *w_node[], t_title *title);
 
 void 			nodes_front(t_nodes **nodes, t_nodes *node);
 void 			nodes_back(t_nodes **nodes, t_nodes *node);
@@ -138,7 +139,7 @@ t_nodes			*node_search(t_nodes *node, char *name);
 
 /*----------------------- RELATIOINS -------------------------------------------------*/
 
-void 			relations_back(t_nodes *nodes, t_relations *relation);
+void 			relations_back(t_nodes **nodes, t_nodes *node, t_relations *relation);
 
 /*----------------------- OTHER ------------------------------------------------------*/
 
@@ -156,6 +157,7 @@ void 			refresh(t_nodes *nodes);
 void 			clean_path(t_nodes *nodes);
 void 			delete_tmp_links(t_nodes *nodes);
 void			clean_memory(t_options **options, t_nodes **nodes);
+void 			free_nodes(t_nodes **nodes);
 
 /*------------------------- OUTPUT --------------------------------------------------*/
 

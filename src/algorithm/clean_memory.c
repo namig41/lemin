@@ -39,15 +39,20 @@ void	free_nodes(t_nodes **nodes)
 	t_nodes		*delete_node;
 	t_relations	*delete_relation;
 
+	if (!nodes || !*nodes)
+		return ;
 	*nodes = (*nodes)->start;
 	while (*nodes)
 	{
-		(*nodes)->relations = (*nodes)->relations->start;
-		while ((*nodes)->relations)
+		if ((*nodes)->relations)
 		{
-			delete_relation = (*nodes)->relations;
-			(*nodes)->relations = (*nodes)->relations->next;
-			free(delete_relation);
+			(*nodes)->relations = (*nodes)->relations->start;
+			while ((*nodes)->relations)
+			{
+				delete_relation = (*nodes)->relations;
+				(*nodes)->relations = (*nodes)->relations->next;
+				free(delete_relation);
+			}
 		}
 		delete_node = *nodes;
 		*nodes = (*nodes)->next;

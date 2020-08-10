@@ -20,13 +20,13 @@ void			parse_file(t_nodes **nodes)
 
 	f = 0;
 	title = NODE;
-	parse_ants();
+	parse_ants(nodes);
 	while (get_next_line(g_fd, &line) > 0)
 	{
-		if (parse_title_1(line, *nodes, &title, &f))
+		if (parse_title_1(line, nodes, &title, &f))
 		{
 			if (f & F_DD)
-				print_error();
+				print_error(nodes);
 			f |= F_DD;
 		}
 		else
@@ -38,10 +38,10 @@ void			parse_file(t_nodes **nodes)
 	}
 	if (!(f & F_START) || !(f & F_END) || !(f & F_REL) || (f & F_COMMENT) ||
 		valid_start_end(*nodes))
-		print_error();
+		print_error(nodes);
 }
 
-void			parse_ants(void)
+void			parse_ants(t_nodes **nodes)
 {
 	char		*line;
 
@@ -52,10 +52,10 @@ void			parse_ants(void)
 		ft_memdel((void **)&line);
 	}
 	if (g_ants <= 0)
-		print_error();
+		print_error(nodes);
 }
 
-int				parse_title_1(char *line, t_nodes *nodes,
+int				parse_title_1(char *line, t_nodes **nodes,
 								t_title *title, t_uc *f)
 {
 	if (ft_strequ(line, START))
@@ -73,21 +73,21 @@ int				parse_title_1(char *line, t_nodes *nodes,
 	return (1);
 }
 
-int				parse_title_2(char *line, t_nodes *nodes,
+int				parse_title_2(char *line, t_nodes **nodes,
 									t_title *title, t_uc *f)
 {
 	if (*line == COMMENT)
 	{
 		if (line[1] == COMMENT || valid_line_node(line + 1) ||
-								valid_line_relation(line + 1, nodes))
-			print_error();
+								valid_line_relation(line + 1, *nodes))
+			print_error(nodes);
 		*f |= F_COMMENT;
 		*title = NODE;
 	}
 	else if (ft_strchr(line, R_SEP))
 	{
 		if (*f & F_COMMENT)
-			print_error();
+			print_error(nodes);
 		*title = RELATION;
 		return (0);
 	}
@@ -105,7 +105,7 @@ void			parse_switch(char *line, t_nodes **nodes,
 	if (*title == TITLE_START)
 	{
 		if (*f & F_START)
-			print_error();
+			print_error(nodes);
 		parse_section_node(line, nodes, title, f);
 		*title = NODE;
 		*f |= F_START;
@@ -113,7 +113,7 @@ void			parse_switch(char *line, t_nodes **nodes,
 	else if (*title == TITLE_END)
 	{
 		if (*f & F_END)
-			print_error();
+			print_error(nodes);
 		parse_section_node(line, nodes, title, f);
 		*title = NODE;
 		*f |= F_END;
