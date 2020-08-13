@@ -35,13 +35,13 @@ void		iter_way(t_options *options, int *substract, int *current)
 	int paths;
 	int ants;
 
-	paths = 1;
+	paths = 0;
 	ants = g_ants;
 	options->paths = options->paths->start;
 	while (options->paths)
 	{
 		if (options->paths->nodes_count * paths - *substract <= ants)
-			current++;
+			*current += 1;
 		else
 			break ;
 		ants--;
@@ -83,6 +83,6 @@ t_options	*choose_ways(t_options *options)
 	optimal = optimal->start;
 	while (options->paths != optimal)
 		options = options->next;
-	print_optimal_ways(optimal);
+	//print_optimal_ways(optimal);
 	return (options);
 }

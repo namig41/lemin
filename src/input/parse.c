@@ -23,6 +23,7 @@ void			parse_file(t_nodes **nodes)
 	parse_ants(nodes);
 	while (get_next_line(g_fd, &line) > 0)
 	{
+		ft_putendl(line);
 		if (parse_title_1(line, nodes, &title, &f))
 		{
 			if (f & F_DD)

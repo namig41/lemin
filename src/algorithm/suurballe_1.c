@@ -56,7 +56,7 @@ void	add_path(t_paths **paths)
 	else
 		start = path;
 	path->start = start;
-	path->nodes_count = 999;
+	path->nodes_count = 0;
 	*paths = path;
 }
 
@@ -126,7 +126,7 @@ void	suurballe(t_nodes *nodes, t_options *options)
 			refresh(nodes);
 			continue ;
 		}
-		if (options->paths->nodes_count < 999)
+		if (options->paths->nodes_count != 0)
 			add_path(&options->paths);
 		complete_path(options, nodes);
 		change_direction(nodes);

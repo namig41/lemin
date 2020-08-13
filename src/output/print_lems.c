@@ -82,17 +82,18 @@ void	print_lems(t_paths *ways)
 		paths = 1;
 		ways = ways->start;
 		is_empty = 1;
-		substract = ways->nodes_count;
+		substract = 0;
 		while (ways)
 		{
+			substract += ways->nodes_count;
 			if (search_steps(ways, paths, substract, &i) == 0)
 				is_empty = 0;
 			paths++;
-			substract += ways->nodes_count;
 			if (!ways->next)
 				break ;
 			ways = ways->next;
 		}
-		ft_putendl("");
+		if (is_empty != 1)
+			ft_putendl("");
 	}
 }
