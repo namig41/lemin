@@ -19,19 +19,19 @@ int main(int argc, char *argv[])
 
     //g_fd = 0;
 	g_fd = open(argv[1], O_RDONLY);
-    add_option(&options);
+    //add_option(&options);
     nodes = NULL;
 	parse_file(&nodes);
 
     //print_nodes(nodes);
-    suurballe(nodes, options);
-    options = choose_ways(options);
-	print_lems(options->paths);
+   // suurballe(nodes, options);
+    //options = choose_ways(options);
+	// print_lems(options->paths);
 //    if (options->paths->nodes_count != 0)
 //		print_lems(options->paths);
 //    else
 //    	ft_putendl("ERROR");
-    clean_memory(&options, &nodes);
+   //  clean_memory(&options, &nodes);
 
     return (0);
 }

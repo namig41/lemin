@@ -1,3 +1,4 @@
+DIR_SRC			= ./src/
 DIR_AlG			= ./src/algorithm/
 DIR_INPUT		= ./src/input/
 DIR_OUTPUT		= ./src/output/
@@ -27,22 +28,10 @@ FILE_OUTPUT		= \
 				choose_ways \
 				print_lems
 
-SRC_LEMIN		= \
-				$(addprefix $(DIR_AlG), $(addsuffix .c, $(FILE_ALG))) \
-				$(addprefix $(DIR_INPUT), $(addsuffix .c, $(FILE_INPUT))) \
-				$(addprefix $(DIR_OUTPUT), $(addsuffix .c, $(FILE_OUTPUT))) \
-				./src/lemin.c
-
-
-OBJ_LEMIN 		= \
-				$(addsuffix .o, $(FILE_ALG)) \
-				$(addsuffix .o, $(FILE_INPUT)) \
-				$(addsuffix .o, $(FILE_OUTPUT)) \
-				./lemin.o
+OBJ_LEMIN 		= $(addprefix $(DIR_OBJ), $(addsuffix .o, $(FILE_ALG)) $(addsuffix .o, $(FILE_INPUT)) $(addsuffix .o, $(FILE_OUTPUT)) lemin.o)
 
 CC 	   			= gcc
 LEMIN 			= lem-in
-CHECKER 		= checker
 #CFLAGS 	   		= -Wall -Werror -Wextra -O2 -I$(DIR_INC) -I$(DIR_LIB)$(DIR_INC)
 CFLAGS 	   		=  -g -O2 -I$(DIR_INC) -I$(DIR_LIB)$(DIR_INC)
 
@@ -50,15 +39,24 @@ all: lemin
 
 lib:
 	@make -C $(DIR_LIB)
-	@cp libft/libft.a ./
 
-obj_lemin:
-	@$(CC) $(CFLAGS) -c $(SRC_LEMIN)
-
-lemin: lib obj_lemin
-	@$(CC) $(CFLAGS) -o $(LEMIN) $(OBJ_LEMIN) libft/libft.a
+$(DIR_OBJ):
 	@mkdir -p $(DIR_OBJ)
-	@mv -f $(OBJ_LEMIN) $(DIR_OBJ)
+
+$(DIR_OBJ)%.o: $(DIR_AlG)%.c
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+$(DIR_OBJ)%.o: $(DIR_INPUT)%.c
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+$(DIR_OBJ)%.o: $(DIR_OUTPUT)%.c
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+$(DIR_OBJ)%.o: $(DIR_SRC)%.c
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+lemin: $(DIR_OBJ) $(OBJ_LEMIN) lib
+	@$(CC) $(CFLAGS) -o $(LEMIN) $(OBJ_LEMIN) $(DIR_LIB)libft.a
 
 clean:
 	@make clean -C $(DIR_LIB)
@@ -71,8 +69,4 @@ fclean: clean
 
 re: fclean all
 
-compile: re
-	@clear
-	./$(LEMIN)
-
-.PHONY: all clean fclean re compile
+.PHONY: all clean fclean re

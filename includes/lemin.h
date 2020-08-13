@@ -15,8 +15,6 @@
 # define F_START 		(1 << 0)
 # define F_END			(1 << 1)
 # define F_REL			(1 << 2)
-# define F_DD			(1 << 3)
-# define F_COMMENT		(1 << 4)
 
 # define N_NAME 		0
 # define N_X 			1
@@ -104,8 +102,7 @@ int 					g_ants;
 void 			parse_ants(t_nodes **nodes);
 void 			parse_file(t_nodes **nodes);
 void 			parse_switch(char* line, t_nodes **nodes, t_title *title, t_uc *f);
-int 			parse_title_1(char *line, t_nodes **nodes, t_title *title, t_uc *f);
-int 			parse_title_2(char *line, t_nodes **nodes, t_title *title, t_uc *f);
+int 			parse_title(char *line, t_nodes **nodes, t_title *title);
 
 /*---------------------- PARSE NODES --------------------------------------------------*/
 
