@@ -19,8 +19,7 @@ void			print_nodes(t_nodes *head)
 
 	while (head)
 	{
-		printf("\nNode: %s%s%s\nRelations: ",
-			head->name, (head->out) ? "(OUT)" : "", (head->in) ? "(IN)" : "");
+		printf("\nNode: %s%s%s\nRelations: ", head->name, (head->out) ? "(OUT)" : "", (head->in) ? "(IN)" : "");
 		r = head->relations;
 		if (head->tmp != NULL)
 		{

@@ -22,7 +22,7 @@ void			parse_file(t_nodes **nodes)
 	parse_ants(nodes);
 	while (get_next_line(g_fd, &line) > 0)
 	{
-		ft_putendl(line);
+		//ft_putendl(line);
 		if (parse_title(line, nodes, &title))
 			;
 		else
