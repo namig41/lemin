@@ -20,15 +20,20 @@ void			parse_section_relation(char *line, t_nodes **nodes)
 	t_relations *r_from;
 	t_relations *r_to;
 
+	if (!(r_from = (t_relations *)ft_memalloc(sizeof(t_relations))))
+		print_error(nodes);
+	if (!(r_to = (t_relations *)ft_memalloc(sizeof(t_relations))))
+		print_error(nodes);
 	if (!(w_relation = valid_line_relation(line, *nodes)))
 		print_error(nodes);
-	if (!(r_from = (t_relations *)ft_memalloc(sizeof(t_relations))))
-		exit(1);
-	if (!(r_to = (t_relations *)ft_memalloc(sizeof(t_relations))))
-		exit(1);
 	if (!(n_from = node_search(*nodes, w_relation[R_FROM])) ||
 			!(n_to = node_search(*nodes, w_relation[R_TO])))
+	{
+		ft_memdel((void **)&r_from);
+		ft_memdel((void **)&r_to);
+		array_clear(w_relation);
 		print_error(nodes);
+	}
 	r_from->active = 1;
 	r_from->relation_weight = 1;
 	r_to->active = 1;
@@ -39,4 +44,5 @@ void			parse_section_relation(char *line, t_nodes **nodes)
 	relations_back(nodes, n_to, r_from);
 	r_to->start = n_from->relations;
 	r_from->start = n_to->relations;
+	array_clear(w_relation);
 }

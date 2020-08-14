@@ -22,7 +22,8 @@ FILE_INPUT		= \
 				parse_nodes \
 				parse_relations \
 				relations \
-				validation
+				validation \
+				array
 
 FILE_OUTPUT		= \
 				choose_ways \

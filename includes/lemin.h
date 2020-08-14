@@ -124,6 +124,11 @@ int				valid_node_cmp(t_nodes *nodes, t_nodes *node);
 
 void 			print_error(t_nodes **nodes);
 
+/*----------------------- ARRAY ------------------------------------------------------*/
+
+void 			array_clear(char **array);
+size_t 			array_size(char **array);
+
 /*----------------------- NODES ------------------------------------------------------*/
 
 void 			node_init(t_nodes **nodes, t_nodes *node, char *w_node[], t_title *title);

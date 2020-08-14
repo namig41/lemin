@@ -41,7 +41,7 @@ void	free_nodes(t_nodes **nodes)
 
 	if (!nodes || !*nodes)
 		return ;
-	*nodes = (*nodes)->start;
+	//*nodes = (*nodes)->start;
 	while (*nodes)
 	{
 		if ((*nodes)->relations)
@@ -56,6 +56,7 @@ void	free_nodes(t_nodes **nodes)
 		}
 		delete_node = *nodes;
 		*nodes = (*nodes)->next;
+		free(delete_node->name);
 		free(delete_node);
 	}
 }

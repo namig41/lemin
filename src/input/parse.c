@@ -11,17 +11,6 @@
 /* ************************************************************************** */
 #include "lemin.h"
 
-inline int 		check_se(t_nodes *nodes)
-{
-	if (!nodes->relations)
-		return (1);
-	while (nodes->next)
-		nodes = nodes->next;
-	if (!nodes->relations)
-		return (1);
-	return (0);
-}
-
 void			parse_file(t_nodes **nodes)
 {
 	char		*line;
@@ -42,7 +31,7 @@ void			parse_file(t_nodes **nodes)
 	}
 	if (!(f & F_START) || !(f & F_END) || !(f & F_REL))
 		print_error(nodes);
-	if (check_se(*nodes))
+	if (valid_start_end(*nodes))
 		print_error(nodes);
 }
 
@@ -63,6 +52,8 @@ void			parse_ants(t_nodes **nodes)
 
 int				parse_title(char *line, t_nodes **nodes, t_title *title)
 {
+	char **tmp;
+
 	if (ft_strequ(line, START))
 		*title = TITLE_START;
 	else if (ft_strequ(line, END))
@@ -71,6 +62,12 @@ int				parse_title(char *line, t_nodes **nodes, t_title *title)
 	{
 		if (line[1] == COMMENT)
 			print_error(nodes);
+		if ((tmp = valid_line_node(line + 1)) ||
+				(tmp = valid_line_relation(line + 1, *nodes)))
+		{
+			array_clear(tmp);
+			print_error(nodes);
+		}
 		*title = NODE;
 	}
 	else if (ft_strchr(line, R_SEP))

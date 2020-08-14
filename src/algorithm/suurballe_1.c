@@ -67,7 +67,8 @@ void	add_option(t_options **options)
 	t_options	*start;
 
 	paths = NULL;
-	option = (t_options*)malloc(sizeof(t_options));
+	if (!(option = (t_options*)malloc(sizeof(t_options))))
+		return ;
 	add_path(&paths);
 	option->paths = paths;
 	if (*options)
