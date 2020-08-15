@@ -3,17 +3,61 @@
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 import math
-import numpy as np
 import networkx as nx
-import pandas as pd
 import sys
+import parser
+import class_ant
+from usage import usage
+from action import action
+from set_paths_color import set_paths_colors
+from settings import create_settings
 
-df = pd.DataFrame({ 'from':['A', 'B', 'C','A'], 'to':['D', 'A', 'E','C'], 'value':[1, 10, 5, 5]})
- 
-# Build your graph
-G=nx.from_pandas_edgelist(df, 'from', 'to', create_using=nx.Graph() )
- 
-# Custom the nodes:
-nx.draw(G, node_color='skyblue', edge_color=df['value'], width=10.0)
+def make_graph(farm):
+	g = nx.Graph()
 
-plt.show()
+	g.add_nodes_from(farm.nodes)
+	g.add_edges_from(farm.links)
+	return g
+
+def create_data(file):
+	data = {}
+
+	data['farm'] = parser.read_file(file)
+	data['g'] = make_graph(data['farm'])
+	data['pos'] = nx.spring_layout(data['g'])
+	return data
+
+def make_squad(data, settings, s_b_n):
+	ant_list = []
+	for nb in range(1, (int(data['farm'].ants) + 1)):
+		ant = class_ant.Ant(nb)
+		ant.set_node_path(data['farm'])
+		ant.set_location(data['pos'], data['farm'])
+		ant.set_journey(data['pos'], s_b_n, data['farm'])
+		ant_list.append(ant)
+	return ant_list
+
+def main():
+	try:
+		data = create_data(sys.argv[-1])
+		settings = create_settings(sys.argv, data['farm'])
+		ant_squad = make_squad(data, settings, settings['steps_between_nodes'])
+		set_paths_colors(data['farm'], ant_squad)
+
+		fig = plt.figure(figsize=(settings['window_size']))
+		ani = FuncAnimation(
+			fig,
+			action,
+			frames = 10 * data['farm'].moves_nb * settings["steps_between_nodes"],
+			fargs = (data, fig, ant_squad, settings),
+			interval = settings['interval'],
+			repeat = settings['repeat'],
+			blit = 0)
+
+		plt.show()
+	except:
+		usage()
+		sys.exit(1)
+
+if __name__ == "__main__":
+	main()	
