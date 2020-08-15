@@ -27,7 +27,7 @@ def basic_settings(settings, args, farm):
 	settings = check_graph_size(farm, settings)		
 	settings["repeat"] = False
 	settings["window_size"] = None
-	settings["steps_between_nodes"] = 15
+	settings["steps_between_nodes"] = 10
 	settings["link_color"] = "#101010"
 	settings["labels"] = dict([(farm.start, 'Start'), (farm.end, 'End')])
 	settings["interval"] = 1
@@ -56,7 +56,7 @@ def set_speed(settings, args):
 	if check_args(args, "-fast"):
 		settings["steps_between_nodes"] = 5
 	if check_args(args, "-slow"):
-		settings["steps_between_nodes"] = 30
+		settings["steps_between_nodes"] = 15
 	return settings
 
 def create_settings(args, farm):

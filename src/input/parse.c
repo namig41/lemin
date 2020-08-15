@@ -9,20 +9,21 @@
 /*   Updated: 2020/08/07 14:24:05 by lcarmelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "lemin.h"
 
 void			parse_file(t_nodes **nodes)
 {
 	char		*line;
 	t_title		title;
-    t_uc        f;
+	t_uc		f;
 
-    f = 0;
+	f = 0;
 	title = NODE;
 	parse_ants(nodes);
 	while (get_next_line(g_fd, &line) > 0)
 	{
-		//ft_putendl(line);
+		ft_putendl(line);
 		if (parse_title(line, nodes, &title))
 			;
 		else
@@ -41,7 +42,7 @@ void			parse_ants(t_nodes **nodes)
 
 	if (get_next_line(g_fd, &line) > 0)
 	{
-		//ft_putendl(line);
+		ft_putendl(line);
 		if (ft_isnumber(line, ft_strlen(line)))
 			g_ants = ft_atoi(line);
 		ft_memdel((void **)&line);
@@ -60,8 +61,6 @@ int				parse_title(char *line, t_nodes **nodes, t_title *title)
 		*title = TITLE_END;
 	else if (*line == COMMENT)
 	{
-		if (line[1] == COMMENT)
-			print_error(nodes);
 		if ((tmp = valid_line_node(line + 1)) ||
 				(tmp = valid_line_relation(line + 1, *nodes)))
 		{
@@ -80,7 +79,8 @@ int				parse_title(char *line, t_nodes **nodes, t_title *title)
 	return (1);
 }
 
-void			parse_switch(char *line, t_nodes **nodes, t_title *title, t_uc *f)
+void			parse_switch(char *line, t_nodes **nodes,
+								t_title *title, t_uc *f)
 {
 	if (*title == TITLE_START)
 	{

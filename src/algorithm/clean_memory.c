@@ -41,7 +41,6 @@ void	free_nodes(t_nodes **nodes)
 
 	if (!nodes || !*nodes)
 		return ;
-	//*nodes = (*nodes)->start;
 	while (*nodes)
 	{
 		if ((*nodes)->relations)

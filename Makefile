@@ -17,7 +17,6 @@ FILE_ALG		= \
 FILE_INPUT		= \
 				error \
 				nodes \
-				other \
 				parse \
 				parse_nodes \
 				parse_relations \

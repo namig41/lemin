@@ -37,7 +37,6 @@ char			**valid_line_relation(char *line, t_nodes *nodes)
 		!node_search(nodes, w_relation[R_FROM]) ||
 		!node_search(nodes, w_relation[R_TO]))
 	{
-
 		array_clear(w_relation);
 		return (NULL);
 	}

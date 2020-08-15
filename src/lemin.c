@@ -12,12 +12,11 @@
 
 #include "lemin.h"
 
-int main(int argc, char *argv[])
+int				main(int argc, char *argv[])
 {
 	t_nodes		*nodes;
-	t_options 	*options;
+	t_options	*options;
 
-	//g_fd = 0;
 	nodes = NULL;
 	options = NULL;
 	g_fd = open(argv[1], O_RDONLY);
@@ -27,8 +26,8 @@ int main(int argc, char *argv[])
 	options = choose_ways(options);
 	if (options->paths->nodes_count != 0)
 		print_lems(options->paths);
-	 else
-	 	ft_putendl("ERROR");
+	else
+		ft_putendl("ERROR");
 	clean_memory(&options, &nodes);
 	return (0);
 }

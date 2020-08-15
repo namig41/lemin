@@ -24,7 +24,7 @@ size_t		array_size(char **array)
 	return (i);
 }
 
-void 		array_clear(char **array)
+void		array_clear(char **array)
 {
 	size_t i;
 

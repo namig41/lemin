@@ -54,7 +54,8 @@ void		nodes_back(t_nodes **list, t_nodes *node)
 	head->next = node;
 }
 
-void		node_init(t_nodes **nodes, t_nodes *node, char *w_node[], t_title *title)
+void		node_init(t_nodes **nodes, t_nodes *node,
+							char *w_node[], t_title *title)
 {
 	if (*w_node[N_NAME] == 'L' || *w_node[N_NAME] == '#')
 	{

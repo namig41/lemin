@@ -12,7 +12,7 @@
 
 #include "lemin.h"
 
-void	print(int lem_num, char *name)
+void				print(int lem_num, char *name)
 {
 	ft_putstr("L");
 	ft_putnbr(lem_num);
@@ -21,29 +21,18 @@ void	print(int lem_num, char *name)
 	ft_putstr(" ");
 }
 
-void	print_shortest_way(t_nodes *nodes)
+inline static void	update_var(int *paths, int *is_empty, int *substract)
 {
-	while (!nodes->is_finish)
-		nodes = nodes->next;
-	while (nodes)
-	{
-		ft_putstr(nodes->name);
-		if (nodes->out)
-			ft_putstr("(OUT)");
-		if (nodes->in)
-			ft_putstr("(IN)");
-		ft_putendl("");
-		if (!nodes->prev)
-			break ;
-		nodes = nodes->prev;
-	}
-	nodes = nodes->start;
+	*paths = 1;
+	*is_empty = 1;
+	*substract = 0;
 }
 
-int		search_steps(t_paths *ways, int paths, int substract, int *i)
+int					search_steps(t_paths *ways, int paths,
+										int substract, int *i)
 {
-	int j;
-	int is_empty;
+	int	j;
+	int	is_empty;
 
 	j = 0;
 	is_empty = 1;
@@ -68,21 +57,19 @@ int		search_steps(t_paths *ways, int paths, int substract, int *i)
 	return (is_empty);
 }
 
-void	print_lems(t_paths *ways)
+void				print_lems(t_paths *ways)
 {
-	int i;
-	int paths;
-	int is_empty;
-	int substract;
+	int	i;
+	int	paths;
+	int	is_empty;
+	int	substract;
 
 	i = 1;
 	is_empty = 0;
 	while (!is_empty)
 	{
-		paths = 1;
 		ways = ways->start;
-		is_empty = 1;
-		substract = 0;
+		update_var(&paths, &is_empty, &substract);
 		while (ways)
 		{
 			substract += ways->nodes_count;

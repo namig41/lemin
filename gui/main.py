@@ -39,21 +39,23 @@ def make_squad(data, settings, s_b_n):
 
 def main():
 	try:
-		data = create_data(sys.argv[-1])
+		file_name = sys.argv.pop(1)
+		data = create_data(file_name)
 		settings = create_settings(sys.argv, data['farm'])
 		ant_squad = make_squad(data, settings, settings['steps_between_nodes'])
 		set_paths_colors(data['farm'], ant_squad)
 
-		fig = plt.figure(figsize=(settings['window_size']))
+		fig = plt.figure("Lem-in", figsize=(settings['window_size']))
 		ani = FuncAnimation(
 			fig,
 			action,
-			frames = 10 * data['farm'].moves_nb * settings["steps_between_nodes"],
+			frames = data['farm'].moves_nb * settings["steps_between_nodes"],
 			fargs = (data, fig, ant_squad, settings),
 			interval = settings['interval'],
 			repeat = settings['repeat'],
 			blit = 0)
 
+		plt.title('Lem-in')
 		plt.show()
 	except:
 		usage()

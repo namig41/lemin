@@ -12,7 +12,8 @@
 
 #include "lemin.h"
 
-void			relations_back(t_nodes **nodes, t_nodes *node, t_relations *relation)
+void			relations_back(t_nodes **nodes, t_nodes *node,
+								t_relations *relation)
 {
 	t_relations *relations;
 	t_relations *head;

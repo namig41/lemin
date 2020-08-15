@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lemin.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lcarmelo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/15 16:42:47 by lcarmelo          #+#    #+#             */
+/*   Updated: 2020/08/15 16:42:48 by lcarmelo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_LEMIN_H
 # define FT_LEMIN_H
 
@@ -27,48 +39,46 @@
 # define R_SIZE 		2
 # define R_SEP 			'-'
 
-typedef enum 			e_title
+typedef enum			e_title
 {
-	  TITLE_START,
-	  TITLE_END,
-	  NODE,
-	  RELATION
-} 						t_title;
+	TITLE_START,
+	TITLE_END,
+	NODE,
+	RELATION
+}						t_title;
 
-typedef struct 			s_point
+typedef struct			s_point
 {
-	int 				x;
-	int 				y;
+	int					x;
+	int					y;
 }						t_point;
 
 typedef struct			s_relations
 {
-	t_uc 				active;
-	t_uc 				need_delete;
+	t_uc				active;
+	t_uc				need_delete;
 	int					relation_weight;
-	struct s_nodes 		*to;
+	struct s_nodes		*to;
 	struct s_relations	*next;
 	struct s_relations	*start;
-
 }						t_relations;
 
 typedef struct			s_nodes
 {
-	char 				*name;
+	char				*name;
 	t_uc				is_start;
 	t_uc				is_finish;
-	t_uc 				in;
-	t_uc 				out;
+	t_uc				in;
+	t_uc				out;
 	t_uc				need_delete;
 	int					weight;
 	int					lem_num;
-	t_point 			point;
-
+	t_point				point;
 	struct s_nodes		*next;
 	struct s_nodes		*tmp;
 	struct s_relations	*relations;
 	struct s_nodes		*prev;
-	struct s_nodes 		*start;				
+	struct s_nodes		*start;
 }						t_nodes;
 
 typedef struct			s_options
@@ -79,7 +89,7 @@ typedef struct			s_options
 	struct s_options	*next;
 }						t_options;
 
-typedef struct 			s_paths
+typedef struct			s_paths
 {
 	int					nodes_count;
 	struct s_paths		*start;
@@ -87,93 +97,95 @@ typedef struct 			s_paths
 	struct s_nodes		**path;
 }						t_paths;
 
-//typedef struct 			s_path
-//{
-//	char 				*name;
-//	struct s_path		*start;
-//	struct s_path		*next;
-//}						t_path;
+int						g_ants;
+int						g_fd;
 
-int 					g_ants;
+/*
+** ---------------------- PARSE ---------------------------------
+*/
 
+void					parse_ants(t_nodes **nodes);
+void					parse_file(t_nodes **nodes);
+void					parse_switch(char *line, t_nodes **nodes,
+												t_title *title, t_uc *f);
+int						parse_title(char *line, t_nodes **nodes,
+													t_title *title);
 
-/*----------------------- PARSE --------------------------------------------------------*/
+/*
+** ---------------------- PARSE NODES ---------------------------------
+*/
 
-void 			parse_ants(t_nodes **nodes);
-void 			parse_file(t_nodes **nodes);
-void 			parse_switch(char* line, t_nodes **nodes, t_title *title, t_uc *f);
-int 			parse_title(char *line, t_nodes **nodes, t_title *title);
+void					parse_section_node(char *line, t_nodes **nodes,
+												t_title *title, t_uc *f);
 
-/*---------------------- PARSE NODES --------------------------------------------------*/
+/*
+** ---------------------- PARSE RELATOINS ---------------------------------
+*/
 
-void 			parse_section_node(char *line, t_nodes **nodes, t_title *title, t_uc *f);
+void					parse_section_relation(char *line, t_nodes **nodes);
 
-/*---------------------- PARSE RELATIONS --------------------------------------------------*/
+/*
+** ----------------------- VALIDATION ---------------------------------
+*/
 
-void 			parse_section_relation(char *line, t_nodes **nodes);
+char					**valid_line_node(char *line);
+char					**valid_line_relation(char *line, t_nodes *nodes);
+int						valid_start_end(t_nodes *nodes);
+int						valid_node_cmp(t_nodes *nodes, t_nodes *node);
 
+/*
+** --------------------------- ERROR ---------------------------------
+*/
 
-/*---------------------- VALIDATION --------------------------------------------------*/
+void					print_error(t_nodes **nodes);
 
-char			**valid_line_node(char *line);
-char			**valid_line_relation(char *line, t_nodes *nodes);
-int				valid_start_end(t_nodes *nodes);
-int				valid_node_cmp(t_nodes *nodes, t_nodes *node);
+/*
+** --------------------------- ARRAY ---------------------------------
+*/
 
-/*----------------------- ERROR ------------------------------------------------------*/
+void					array_clear(char **array);
+size_t					array_size(char **array);
 
-void 			print_error(t_nodes **nodes);
+/*
+** --------------------------- NODES ---------------------------------
+*/
 
-/*----------------------- ARRAY ------------------------------------------------------*/
+void					node_init(t_nodes **nodes, t_nodes *node,
+										char *w_node[], t_title *title);
+void					nodes_front(t_nodes **nodes, t_nodes *node);
+void					nodes_back(t_nodes **nodes, t_nodes *node);
+void					nodes_insert(t_nodes **nodes,
+											t_nodes *node, size_t num);
+t_nodes					*node_search(t_nodes *node, char *name);
 
-void 			array_clear(char **array);
-size_t 			array_size(char **array);
+/*
+** --------------------------- RELATIONS ---------------------------------
+*/
 
-/*----------------------- NODES ------------------------------------------------------*/
+void					relations_back(t_nodes **nodes, t_nodes *node,
+									t_relations *relation);
 
-void 			node_init(t_nodes **nodes, t_nodes *node, char *w_node[], t_title *title);
+/*
+** --------------------------- ALGORITH ---------------------------------
+*/
 
-void 			nodes_front(t_nodes **nodes, t_nodes *node);
-void 			nodes_back(t_nodes **nodes, t_nodes *node);
-void 			nodes_insert(t_nodes **nodes, t_nodes *node, size_t num);
+void					suurballe(t_nodes *nodes, t_options *options);
+void					ellman_ford(t_nodes *nodes);
+void					refresh(t_nodes *nodes);
 
-t_nodes			*node_search(t_nodes *node, char *name);
+/*
+** --------------------------- CLEAN MEMORY ----------------------------
+*/
 
-/*----------------------- RELATIOINS -------------------------------------------------*/
+void					clean_path(t_nodes *nodes);
+void					delete_tmp_links(t_nodes *nodes);
+void					lean_memory(t_options **options, t_nodes **nodes);
+void					free_nodes(t_nodes **nodes);
 
-void 			relations_back(t_nodes **nodes, t_nodes *node, t_relations *relation);
+/*
+** --------------------------- OUTPUT ---------------------------------
+*/
 
-/*----------------------- OTHER ------------------------------------------------------*/
-
-void			print_nodes(t_nodes *head);
-size_t			word_count(char **ar);
-
-/*----------------------- ALGORITHM --------------------------------------------------*/
-
-void 			suurballe(t_nodes *nodes, t_options *options);
-void			bellman_ford(t_nodes *nodes);
-void 			refresh(t_nodes *nodes);
-
-/*------------------------- CLEAR MEMORY ----------------------------------------------*/
-
-void 			clean_path(t_nodes *nodes);
-void 			delete_tmp_links(t_nodes *nodes);
-void			clean_memory(t_options **options, t_nodes **nodes);
-void 			free_nodes(t_nodes **nodes);
-
-/*------------------------- OUTPUT --------------------------------------------------*/
-
-t_options		*choose_ways(t_options *options);
-
-/*					need delete							*/
-void	add_option(t_options **options);
-void 	print_lems(t_paths *ways);
-void	print_shortest_way(t_nodes *nodes);
-void	delete_relations(t_nodes **nodes);
-int		is_cross(t_nodes *nodes);
-void	add_in_out(t_nodes *nodes);
-void	change_direction(t_nodes *nodes);
-
-int g_fd;
+t_options				*choose_ways(t_options *options);
 
 #endif

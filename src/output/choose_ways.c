@@ -12,25 +12,16 @@
 
 #include "lemin.h"
 
-void	print_optimal_ways(t_paths *optimal)
+static t_options	*search_optimal(t_options *options, t_paths *optimal)
 {
-	int i;
-
-	ft_putendl("------------OPTIMAL--------------");
-	while (optimal)
-	{
-		i = 0;
-		while (optimal->path[i])
-		{
-			ft_putendl(optimal->path[i]->name);
-			i++;
-		}
-		ft_putendl("");
-		optimal = optimal->next;
-	}
+	options = options->start;
+	optimal = optimal->start;
+	while (options->paths != optimal)
+		options = options->next;
+	return (options);
 }
 
-void		iter_way(t_options *options, int *substract, int *current)
+void				iter_way(t_options *options, int *substract, int *current)
 {
 	int paths;
 	int ants;
@@ -53,15 +44,15 @@ void		iter_way(t_options *options, int *substract, int *current)
 	}
 }
 
-t_options	*choose_ways(t_options *options)
+t_options			*choose_ways(t_options *options)
 {
 	int		current;
 	int		substract;
-	t_paths	*optimal;
 	int		max;
+	t_paths	*optimal;
 
-	options = options->start;
 	max = 0;
+	options = options->start;
 	optimal = options->start->paths;
 	while (options)
 	{
@@ -78,11 +69,5 @@ t_options	*choose_ways(t_options *options)
 			break ;
 		options = options->next;
 	}
-
-	options = options->start;
-	optimal = optimal->start;
-	while (options->paths != optimal)
-		options = options->next;
-	//print_optimal_ways(optimal);
-	return (options);
+	return (search_optimal(options, optimal));
 }
