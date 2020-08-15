@@ -41,7 +41,7 @@ void			parse_ants(t_nodes **nodes)
 
 	if (get_next_line(g_fd, &line) > 0)
 	{
-		ft_putendl(line);
+		//ft_putendl(line);
 		if (ft_isnumber(line, ft_strlen(line)))
 			g_ants = ft_atoi(line);
 		ft_memdel((void **)&line);

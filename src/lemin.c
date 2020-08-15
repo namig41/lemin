@@ -23,10 +23,8 @@ int main(int argc, char *argv[])
 	g_fd = open(argv[1], O_RDONLY);
 	add_option(&options);
 	parse_file(&nodes);
-	print_nodes(nodes);
 	suurballe(nodes, options);
 	options = choose_ways(options);
-	print_lems(options->paths);
 	if (options->paths->nodes_count != 0)
 		print_lems(options->paths);
 	 else
