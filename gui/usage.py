@@ -21,7 +21,7 @@ def usage():
 	print("  {}{}{}compile:{}".format(underline, bold, cyan, end))
 	print("\t{}{}make{}".format(bold, blue, end))
 	print("  {}{}{}Launch visualizer:{}".format(underline, bold, cyan, end))
-	print("\t{}{}./main [map_file] [-visu_option_1] [-visu_option_2] etc...{}".format(bold, blue, end))
+	print("\t{}{}python3 main.py [map_file] [-visu_option_1] [-visu_option_2] etc...{}".format(bold, blue, end))
 	print("  {}{}{}Visualizer keys:{}".format(underline, bold, cyan, end))
 
 	# Animation speed

@@ -1,8 +1,5 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   lemin.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
+/*                                                                            */ /*                                                        :::      ::::::::   */ /*   lemin.h                                            :+:      :+:    :+:   */ /*                                                    +:+ +:+         +:+     */
 /*   By: lcarmelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 16:42:47 by lcarmelo          #+#    #+#             */
@@ -98,7 +95,6 @@ typedef struct			s_paths
 }						t_paths;
 
 int						g_ants;
-int						g_fd;
 
 /*
 ** ---------------------- PARSE ---------------------------------
@@ -170,7 +166,7 @@ void					relations_back(t_nodes **nodes, t_nodes *node,
 */
 
 void					suurballe(t_nodes *nodes, t_options *options);
-void					ellman_ford(t_nodes *nodes);
+void					bellman_ford(t_nodes *nodes);
 void					refresh(t_nodes *nodes);
 
 /*
@@ -179,7 +175,7 @@ void					refresh(t_nodes *nodes);
 
 void					clean_path(t_nodes *nodes);
 void					delete_tmp_links(t_nodes *nodes);
-void					lean_memory(t_options **options, t_nodes **nodes);
+void					clean_memory(t_options **options, t_nodes **nodes);
 void					free_nodes(t_nodes **nodes);
 
 /*
@@ -187,5 +183,18 @@ void					free_nodes(t_nodes **nodes);
 */
 
 t_options				*choose_ways(t_options *options);
+void					print_lems(t_paths *ways);
+
+/*
+** --------------------------- OTHER ---------------------------------
+*/
+
+void					add_option(t_options **options);
+void					print_lems(t_paths *ways);
+void					print_shortest_way(t_nodes *nodes);
+void					delete_relations(t_nodes **nodes);
+int						is_cross(t_nodes *nodes);
+void					add_in_out(t_nodes *nodes);
+void					change_direction(t_nodes *nodes);
 
 #endif

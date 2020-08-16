@@ -30,33 +30,42 @@ def check_status(g, status, line):
 		pass
 	status = None
 	return status
+	
 
 def read_file(file):
 	status = None
 	g = graph.Graph()
 	reg_dict = regex_compile()
-	lemin = subprocess.Popen(["../lem-in", file], stdout=subprocess.PIPE)
 
-	for line in lemin.stdout:
-		line = line.decode()
-		status = check_status(g, status, line)
+	with open(file, 'r') as f:
+		for line in f:
+			status = check_status(g, status, line)
+			if (reg_dict["is_ant_nb"].search(line)):
+				g.ants = int(line)
+			elif (reg_dict["is_start"].search(line)):
+				status = "start"
+			elif (reg_dict["is_end"].search(line)):
+				status = "end"
+			elif (reg_dict["is_room"].search(line)):
+				get_room(g, line)
+			elif (reg_dict["is_link"].search(line)):
+				get_link(g, line)
+			elif (reg_dict["is_comment"].search(line)):
+				status = "comment"
 
-		if (reg_dict["is_ant_nb"].search(line)):
-			g.ants = int(line)
-		elif (reg_dict["is_start"].search(line)):
-			status = "start"
-		elif (reg_dict["is_end"].search(line)):
-			status = "end"
-		elif (reg_dict["is_comment"].search(line)):
-			status = "comment"
-		elif (reg_dict["is_room"].search(line)):
-			get_room(g, line)
-		elif (reg_dict["is_move"].search(line)):
-			get_move(g, line)
-		elif (reg_dict["is_link"].search(line)):
-			get_link(g, line)
-		elif (reg_dict["is_error"].search(line)):
-			print("ERROR")
-			sys.exit(1)
+	with open(file, 'r') as f:
+		with subprocess.Popen(['../lem-in'], stdin=f, stdout=subprocess.PIPE) as lemin:
+
+			for line in lemin.stdout:
+				line = line.decode()
+				status = check_status(g, status, line)
+
+				if (reg_dict["is_move"].search(line)):
+					get_move(g, line)
+				elif (reg_dict["is_error"].search(line)):
+					sys.exit("Error")
+				elif (reg_dict["is_comment"].search(line)):
+					status = "comment"
+
 	g.moves_nb = len(g.moves)
 	return (g)

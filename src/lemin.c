@@ -12,14 +12,13 @@
 
 #include "lemin.h"
 
-int				main(int argc, char *argv[])
+int				main(void)
 {
 	t_nodes		*nodes;
 	t_options	*options;
 
 	nodes = NULL;
 	options = NULL;
-	g_fd = open(argv[1], O_RDONLY);
 	add_option(&options);
 	parse_file(&nodes);
 	suurballe(nodes, options);

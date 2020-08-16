@@ -17,14 +17,13 @@ def check_graph_size(farm, settings):
 		settings["node_size"] = 300
 		settings["window_size"] = (16, 12)
 	elif (len(farm.nodes)) > 1000:
-		settings["markersize"] = 5.0
-		settings["node_size"] = 100
+		settings["markersize"] = 3.0
+		settings["node_size"] = 50
 		settings["window_size"] = (18, 16)
 	return settings
 
 def basic_settings(settings, args, farm):
 
-	settings = check_graph_size(farm, settings)		
 	settings["repeat"] = False
 	settings["window_size"] = None
 	settings["steps_between_nodes"] = 10

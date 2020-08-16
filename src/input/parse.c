@@ -21,9 +21,8 @@ void			parse_file(t_nodes **nodes)
 	f = 0;
 	title = NODE;
 	parse_ants(nodes);
-	while (get_next_line(g_fd, &line) > 0)
+	while (get_next_line(STDIN_FILENO, &line) > 0)
 	{
-		ft_putendl(line);
 		if (parse_title(line, nodes, &title))
 			;
 		else
@@ -40,9 +39,8 @@ void			parse_ants(t_nodes **nodes)
 {
 	char		*line;
 
-	if (get_next_line(g_fd, &line) > 0)
+	if (get_next_line(STDIN_FILENO, &line) > 0)
 	{
-		ft_putendl(line);
 		if (ft_isnumber(line, ft_strlen(line)))
 			g_ants = ft_atoi(line);
 		ft_memdel((void **)&line);
