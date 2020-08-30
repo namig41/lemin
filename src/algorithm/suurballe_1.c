@@ -112,6 +112,9 @@ void	clean_option(t_options *option)
 void	suurballe(t_nodes *nodes, t_options *options)
 {
 	t_nodes		*finish_node;
+	t_options   *cache;
+    t_options   *result;
+    t_options   *next_result;
 
 	finish_node = nodes->start;
 	while (!finish_node->is_finish)
@@ -123,7 +126,18 @@ void	suurballe(t_nodes *nodes, t_options *options)
 			break ;
 		if (is_cross(nodes))
 		{
-			add_option(&options);
+		    cache = options;
+            result = choose_ways(options);
+            options = cache;
+
+            if (result == next_result)
+                break;
+
+            cache = options;
+            next_result = choose_ways(options);
+            options = cache;
+
+            add_option(&options);
 			refresh(nodes);
 			continue ;
 		}

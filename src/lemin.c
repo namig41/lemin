@@ -22,7 +22,7 @@ int				main(void)
 	add_option(&options);
 	parse_file(&nodes);
 	suurballe(nodes, options);
-	options = choose_ways(options);
+    options = choose_ways(options);
 	if (options->paths->nodes_count != 0)
 		print_lems(options->paths);
 	else
