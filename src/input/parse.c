@@ -6,7 +6,7 @@
 /*   By: lcarmelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/07 14:24:05 by lcarmelo          #+#    #+#             */
-/*   Updated: 2020/08/07 14:24:05 by lcarmelo         ###   ########.fr       */
+/*   Updated: 2020/08/30 12:47:15 by lcarmelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,14 @@ void			parse_ants(t_nodes **nodes)
 {
 	char		*line;
 
+	g_ants = -1;
 	if (get_next_line(STDIN_FILENO, &line) > 0)
 	{
-		if (ft_isnumber(line, ft_strlen(line)))
+		if (ft_strlen(line) && ft_isnumber(line, ft_strlen(line)))
 			g_ants = ft_atoi(line);
 		ft_memdel((void **)&line);
 	}
-	if (g_ants <= 0)
+	if (g_ants < 0)
 		print_error(nodes);
 }
 
