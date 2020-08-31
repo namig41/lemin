@@ -1,7 +1,7 @@
 DIR_SRC			= ./src/
 DIR_AlG			= ./src/algorithm/
-DIR_INPUT		= ./src/input/
 DIR_OUTPUT		= ./src/output/
+DIR_INPUT		= ./src/input/
 DIR_INC			= ./includes/
 DIR_LIB			= ./libft/
 DIR_OBJ 		= ./obj/
