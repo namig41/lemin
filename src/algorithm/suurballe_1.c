@@ -6,7 +6,7 @@
 /*   By: lcarmelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/07 13:18:07 by lcarmelo          #+#    #+#             */
-/*   Updated: 2020/08/07 13:18:09 by lcarmelo         ###   ########.fr       */
+/*   Updated: 2020/08/30 14:32:27 by lcarmelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,8 @@ void	clean_option(t_options *option)
 void	suurballe(t_nodes *nodes, t_options *options)
 {
 	t_nodes		*finish_node;
-	t_options   *cache;
-    t_options   *result;
-    t_options   *next_result;
+	t_options	*result;
+	t_options	*next_result;
 
 	finish_node = nodes->start;
 	while (!finish_node->is_finish)
@@ -126,27 +125,15 @@ void	suurballe(t_nodes *nodes, t_options *options)
 			break ;
 		if (is_cross(nodes))
 		{
-		    cache = options;
-            result = choose_ways(options);
-            options = cache;
-
-            if (result == next_result)
-                break;
-
-            cache = options;
-            next_result = choose_ways(options);
-            options = cache;
-
-            add_option(&options);
+			result = save_opt(options);
+			if (result == next_result)
+				break ;
+			next_result = save_opt(options);
+			add_option(&options);
 			refresh(nodes);
 			continue ;
 		}
-		if (options->paths->nodes_count != 0)
-			add_path(&options->paths);
-		complete_path(options, nodes);
-		change_direction(nodes);
-		add_in_out(nodes);
-		clean_path(nodes);
+		clipping(nodes, options);
 	}
 	refresh(nodes);
 }

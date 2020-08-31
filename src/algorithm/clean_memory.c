@@ -12,7 +12,7 @@
 
 #include "lemin.h"
 
-void	free_paths(t_options **options)
+void		free_paths(t_options **options)
 {
 	t_paths		*delete_paths;
 	t_options	*delete_options;
@@ -34,7 +34,7 @@ void	free_paths(t_options **options)
 	}
 }
 
-void	free_nodes(t_nodes **nodes)
+void		free_nodes(t_nodes **nodes)
 {
 	t_nodes		*delete_node;
 	t_relations	*delete_relation;
@@ -60,8 +60,19 @@ void	free_nodes(t_nodes **nodes)
 	}
 }
 
-void	clean_memory(t_options **options, t_nodes **nodes)
+void		clean_memory(t_options **options, t_nodes **nodes)
 {
 	free_paths(options);
 	free_nodes(nodes);
+}
+
+t_options	*save_opt(t_options *options)
+{
+	t_options *cache;
+	t_options *result;
+
+	cache = options;
+	result = choose_ways(options);
+	options = cache;
+	return (result);
 }

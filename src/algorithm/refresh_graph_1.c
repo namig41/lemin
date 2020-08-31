@@ -78,3 +78,13 @@ void	refresh(t_nodes *nodes)
 	del_and_activate_links(nodes);
 	clean_path(nodes);
 }
+
+void	clipping(t_nodes *nodes, t_options *options)
+{
+	if (options->paths->nodes_count != 0)
+		add_path(&options->paths);
+	complete_path(options, nodes);
+	change_direction(nodes);
+	add_in_out(nodes);
+	clean_path(nodes);
+}
