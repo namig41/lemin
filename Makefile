@@ -32,8 +32,8 @@ OBJ_LEMIN 		= $(addprefix $(DIR_OBJ), $(addsuffix .o, $(FILE_ALG)) $(addsuffix .
 
 CC 	   			= gcc
 LEMIN 			= lem-in
-CFLAGS 	   		= -Wall -Werror -Wextra -O2 -I$(DIR_INC) -I$(DIR_LIB)$(DIR_INC)
-#CFLAGS 	   		=  -g -O2 -I$(DIR_INC) -I$(DIR_LIB)$(DIR_INC)
+#CFLAGS 	   		= -Wall -Werror -Wextra -O2 -I$(DIR_INC) -I$(DIR_LIB)$(DIR_INC)
+CFLAGS 	   		=  -g -O2 -I$(DIR_INC) -I$(DIR_LIB)$(DIR_INC)
 
 all: lemin
 

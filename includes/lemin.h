@@ -171,6 +171,10 @@ void					relations_back(t_nodes **nodes, t_nodes *node,
 void					suurballe(t_nodes *nodes, t_options *options);
 void					bellman_ford(t_nodes *nodes);
 void					refresh(t_nodes *nodes);
+void					clipping(t_nodes *nodes, t_options *options);
+void					complete_path(t_options *option, t_nodes *nodes);
+void					add_path(t_paths **paths);
+t_options				*save_opt(t_options *options);
 
 /*
 ** --------------------------- CLEAN MEMORY ----------------------------
