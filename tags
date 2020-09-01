@@ -1,0 +1,398 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Ant	gui/class_ant.py	/^class Ant():$/;"	c
+BUFF_SIZE	libft/includes/get_next_line.h	15;"	d
+CC	Makefile	/^CC 	   			= gcc$/;"	m
+CC	libft/Makefile	/^CC              = gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS 	   		=  -g -O2 -I$(DIR_INC) -I$(DIR_LIB)$(DIR_INC)$/;"	m
+CFLAGS	libft/Makefile	/^CFLAGS          = -g -c -W -O2 -I$(DIR_INC)$/;"	m
+COMMENT	includes/lemin.h	23;"	d
+DIR_AlG	Makefile	/^DIR_AlG			= .\/src\/algorithm\/$/;"	m
+DIR_CONVERSION	libft/Makefile	/^DIR_CONVERSION  = .\/conversion\/$/;"	m
+DIR_CTYPE	libft/Makefile	/^DIR_CTYPE 		= .\/ctype\/$/;"	m
+DIR_DISPLAY	libft/Makefile	/^DIR_DISPLAY 	= .\/display\/$/;"	m
+DIR_GC	libft/Makefile	/^DIR_GC			= .\/gc\/$/;"	m
+DIR_GNL	libft/Makefile	/^DIR_GNL 		= .\/gnl\/$/;"	m
+DIR_INC	Makefile	/^DIR_INC			= .\/includes\/$/;"	m
+DIR_INC	libft/Makefile	/^DIR_INC   		= .\/includes\/$/;"	m
+DIR_INPUT	Makefile	/^DIR_INPUT		= .\/src\/input\/$/;"	m
+DIR_LIB	Makefile	/^DIR_LIB			= .\/libft\/$/;"	m
+DIR_MATH	libft/Makefile	/^DIR_MATH 		= .\/math\/$/;"	m
+DIR_MEMORY	libft/Makefile	/^DIR_MEMORY      = .\/memory\/$/;"	m
+DIR_OBJ	Makefile	/^DIR_OBJ 		= .\/obj\/$/;"	m
+DIR_OBJ	libft/Makefile	/^DIR_OBJ 		= .\/obj\/$/;"	m
+DIR_OUTPUT	Makefile	/^DIR_OUTPUT		= .\/src\/output\/$/;"	m
+DIR_SRC	Makefile	/^DIR_SRC			= .\/src\/$/;"	m
+DIR_STACK	libft/Makefile	/^DIR_STACK 		= .\/stack\/$/;"	m
+DIR_STRINGS	libft/Makefile	/^DIR_STRINGS     = .\/strings\/$/;"	m
+DIR_VECTOR	libft/Makefile	/^DIR_VECTOR 		= .\/vector\/$/;"	m
+END	includes/lemin.h	22;"	d
+END_FILE	libft/includes/get_next_line.h	22;"	d
+ERR	includes/lemin.h	25;"	d
+FILE_ALG	Makefile	/^FILE_ALG		= \\$/;"	m
+FILE_INPUT	Makefile	/^FILE_INPUT		= \\$/;"	m
+FILE_OUTPUT	Makefile	/^FILE_OUTPUT		= \\$/;"	m
+FT_LEMIN_H	includes/lemin.h	14;"	d
+FUN_CONVERSION	libft/Makefile	/^FUN_CONVERSION = \\$/;"	m
+FUN_CTYPE	libft/Makefile	/^FUN_CTYPE = \\$/;"	m
+FUN_DISPLAY	libft/Makefile	/^FUN_DISPLAY = \\$/;"	m
+FUN_GC	libft/Makefile	/^FUN_GC = \\$/;"	m
+FUN_GNL	libft/Makefile	/^FUN_GNL = \\$/;"	m
+FUN_MATH	libft/Makefile	/^FUN_MATH = \\$/;"	m
+FUN_MEMORY	libft/Makefile	/^FUN_MEMORY = \\$/;"	m
+FUN_STACK	libft/Makefile	/^FUN_STACK = \\$/;"	m
+FUN_STRINGS	libft/Makefile	/^FUN_STRINGS = \\$/;"	m
+FUN_VECTOR	libft/Makefile	/^FUN_VECTOR = \\$/;"	m
+F_END	includes/lemin.h	28;"	d
+F_REL	includes/lemin.h	29;"	d
+F_START	includes/lemin.h	27;"	d
+GC_H	libft/includes/gc.h	14;"	d
+GET_NEXT_LINE_H	libft/includes/get_next_line.h	14;"	d
+Graph	gui/graph.py	/^class Graph:$/;"	c
+HEADERS	libft/Makefile	/^HEADERS = \\$/;"	m
+INC	libft/Makefile	/^INC				= $(addsuffix .h, $(HEADERS))$/;"	m
+INC_ALL	libft/Makefile	/^INC_ALL			= $(addprefix $(DIR_INC), $(INC))$/;"	m
+LEMIN	Makefile	/^LEMIN 			= lem-in$/;"	m
+LIBFT_H	libft/includes/libft.h	14;"	d
+MEM_ERR	libft/includes/get_next_line.h	23;"	d
+NAME	libft/Makefile	/^NAME            = libft.a$/;"	m
+NODE	includes/lemin.h	/^	NODE,$/;"	e	enum:e_title
+N_NAME	includes/lemin.h	31;"	d
+N_SEP	includes/lemin.h	35;"	d
+N_SIZE	includes/lemin.h	34;"	d
+N_X	includes/lemin.h	32;"	d
+N_Y	includes/lemin.h	33;"	d
+OBJ_ALL	libft/Makefile	/^OBJ_ALL         = $(addprefix $(DIR_OBJ), $(addsuffix .o, $(FUN_CONVERSION) $(FUN_MEMORY) $(FUN_GC) $(FUN_STRINGS) $(FUN_VECTOR) $(FUN_STACK) $(FUN_MATH) $(FUN_CTYPE) $(FUN_DISPLAY) $(FUN_GNL)))$/;"	m
+OBJ_LEMIN	Makefile	/^OBJ_LEMIN 		= $(addprefix $(DIR_OBJ), $(addsuffix .o, $(FILE_ALG)) $(addsuffix .o, $(FILE_INPUT)) $(addsuffix .o, $(FILE_OUTPUT)) lemin.o)$/;"	m
+OFFSET_LEFT	libft/includes/vector.h	37;"	d
+OFFSET_NO	libft/includes/vector.h	36;"	d
+OFFSET_RIGHT	libft/includes/vector.h	38;"	d
+RELATION	includes/lemin.h	/^	RELATION$/;"	e	enum:e_title
+R_FROM	includes/lemin.h	37;"	d
+R_SEP	includes/lemin.h	40;"	d
+R_SIZE	includes/lemin.h	39;"	d
+R_TO	includes/lemin.h	38;"	d
+SEP	libft/includes/get_next_line.h	20;"	d
+SRC_ALL	libft/Makefile	/^SRC_ALL         = \\$/;"	m
+SRC_CONVERSION	libft/Makefile	/^SRC_CONVERSION  = $(addprefix $(DIR_CONVERSION), $(addsuffix .c, $(FUN_CONVERSION)))$/;"	m
+SRC_CTYPE	libft/Makefile	/^SRC_CTYPE 		= $(addprefix $(DIR_CTYPE), $(addsuffix .c, $(FUN_CTYPE)))$/;"	m
+SRC_DISPLAY	libft/Makefile	/^SRC_DISPLAY		= $(addprefix $(DIR_DISP), $(addsuffix .c, $(FUN_DISPLAY)))$/;"	m
+SRC_GC	libft/Makefile	/^SRC_GC 			= $(addprefix $(DIR_GC), $(addsuffix .c, $(FUN_GC)))$/;"	m
+SRC_GNL	libft/Makefile	/^SRC_GNL 		= $(addprefix $(DIR_GNL), $(addsuffix .c, $(FUN_GNL)))$/;"	m
+SRC_MATH	libft/Makefile	/^SRC_MATH 		= $(addprefix $(DIR_MATH), $(addsuffix .c, $(FUN_MATH)))$/;"	m
+SRC_MEMORY	libft/Makefile	/^SRC_MEMORY      = $(addprefix $(DIR_MEMORY), $(addsuffix .c, $(FUN_MEMORY)))$/;"	m
+SRC_STACK	libft/Makefile	/^SRC_STACK 		= $(addprefix $(DIR_STACK), $(addsuffix .c, $(FUN_STACK)))$/;"	m
+SRC_STRINGS	libft/Makefile	/^SRC_STRINGS     = $(addprefix $(DIR_STRINGS), $(addsuffix .c, $(FUN_STRINGS)))$/;"	m
+SRC_VECTOR	libft/Makefile	/^SRC_VECTOR 		= $(addprefix $(DIR_VECTOR), $(addsuffix .c, $(FUN_VECTOR)))$/;"	m
+STACK_H	libft/includes/stack.h	14;"	d
+START	includes/lemin.h	21;"	d
+SUCCESS	libft/includes/get_next_line.h	21;"	d
+TB	libft/strings/ft_strlen.c	20;"	d	file:
+TB_4	libft/strings/ft_strlen.c	22;"	d	file:
+TB_8	libft/strings/ft_strlen.c	23;"	d	file:
+TITLE_END	includes/lemin.h	/^	TITLE_END,$/;"	e	enum:e_title
+TITLE_START	includes/lemin.h	/^	TITLE_START,$/;"	e	enum:e_title
+VECTOR_ERROR	libft/includes/vector.h	24;"	d
+VECTOR_H	libft/includes/vector.h	14;"	d
+VECTOR_MIN_CAPACITY	libft/includes/vector.h	22;"	d
+VECTOR_SPEED	libft/includes/vector.h	26;"	d
+VECTOR_SUCCESS	libft/includes/vector.h	23;"	d
+VEC_SIZE	libft/includes/get_next_line.h	19;"	d
+__init__	gui/class_ant.py	/^    def __init__(self, number, node_path=None,$/;"	m	class:Ant
+__init__	gui/graph.py	/^	def __init__(self):$/;"	m	class:Graph
+__str__	gui/graph.py	/^	def __str__(self):$/;"	m	class:Graph	file:
+action	gui/action.py	/^def action(frame, data, fig, ant_squad, settings):$/;"	f
+active	includes/lemin.h	/^	t_uc				active;$/;"	m	struct:s_relations
+add_in_out	src/algorithm/suurballe_2.c	/^void	add_in_out(t_nodes *nodes)$/;"	f
+add_option	src/algorithm/suurballe_1.c	/^void	add_option(t_options **options)$/;"	f
+add_out_node	src/algorithm/suurballe_2.c	/^t_nodes	*add_out_node(t_nodes *node)$/;"	f
+add_path	src/algorithm/suurballe_1.c	/^void	add_path(t_paths **paths)$/;"	f
+array_clear	src/input/array.c	/^void		array_clear(char **array)$/;"	f
+array_size	src/input/array.c	/^size_t		array_size(char **array)$/;"	f
+basic_settings	gui/settings.py	/^def basic_settings(settings, args, farm):$/;"	f
+bellman_ford	src/algorithm/bellman_ford.c	/^void	bellman_ford(t_nodes *nodes)$/;"	f
+calc_offset	libft/vector/vector_offset.c	/^inline static void	*calc_offset(t_vector *vector, size_t index)$/;"	f	file:
+capacity	libft/includes/vector.h	/^	size_t		capacity;$/;"	m	struct:s_vector
+change_direction	src/algorithm/suurballe_2.c	/^void	change_direction(t_nodes *nodes)$/;"	f
+change_start	src/algorithm/refresh_graph_2.c	/^void	change_start(t_nodes *nodes, t_relations *start)$/;"	f
+check_args	gui/settings.py	/^def check_args(args, option):$/;"	f
+check_graph_size	gui/settings.py	/^def check_graph_size(farm, settings):$/;"	f
+check_status	gui/parser.py	/^def check_status(g, status, line):$/;"	f
+choose_ways	src/output/choose_ways.c	/^t_options			*choose_ways(t_options *options)$/;"	f
+clean_memory	src/algorithm/clean_memory.c	/^void		clean_memory(t_options **options, t_nodes **nodes)$/;"	f
+clean_option	src/algorithm/suurballe_1.c	/^void	clean_option(t_options *option)$/;"	f
+clean_path	src/algorithm/refresh_graph_1.c	/^void	clean_path(t_nodes *nodes)$/;"	f
+clipping	src/algorithm/refresh_graph_1.c	/^void	clipping(t_nodes *nodes, t_options *options)$/;"	f
+compare_relations_cost	src/algorithm/bellman_ford.c	/^void	compare_relations_cost(t_relations *relations, t_nodes *node)$/;"	f
+compare_tmp_links_cost	src/algorithm/bellman_ford.c	/^void	compare_tmp_links_cost(t_nodes *node)$/;"	f
+complete_path	src/algorithm/suurballe_1.c	/^void	complete_path(t_options *option, t_nodes *nodes)$/;"	f
+convert_path_to_links	gui/set_paths_color.py	/^def convert_path_to_links(paths):$/;"	f
+count_words	libft/gc/gc_strsplit.c	/^static char	**count_words(char const *s, char c)$/;"	f	file:
+create_data	gui/main.py	/^def create_data(file):$/;"	f
+create_settings	gui/settings.py	/^def create_settings(args, farm):$/;"	f
+data	libft/includes/vector.h	/^	void		*data;$/;"	m	struct:s_vector
+del_and_activate_links	src/algorithm/refresh_graph_1.c	/^void	del_and_activate_links(t_nodes *nodes)$/;"	f
+delete_nodes	src/algorithm/refresh_graph_1.c	/^void	delete_nodes(t_nodes **nodes)$/;"	f
+delete_relations	src/algorithm/refresh_graph_2.c	/^void	delete_relations(t_nodes **nodes)$/;"	f
+delete_relations_1	src/algorithm/refresh_graph_2.c	/^void	delete_relations_1(t_relations *relations,$/;"	f
+draw_ant	gui/action.py	/^def draw_ant(position, color, settings):$/;"	f
+draw_node	gui/action.py	/^def draw_node(data, name, color, size):$/;"	f
+draw_nodes	gui/action.py	/^def draw_nodes(data, settings):$/;"	f
+e_title	includes/lemin.h	/^typedef enum			e_title$/;"	g
+element_size	libft/includes/vector.h	/^	size_t		element_size;$/;"	m	struct:s_vector
+free_nodes	src/algorithm/clean_memory.c	/^void		free_nodes(t_nodes **nodes)$/;"	f
+free_paths	src/algorithm/clean_memory.c	/^void		free_paths(t_options **options)$/;"	f
+ft_abs	libft/math/ft_abs.c	/^int	ft_abs(int num)$/;"	f
+ft_atoi	libft/conversion/ft_atoi.c	/^int					ft_atoi(char *str)$/;"	f
+ft_atoll	libft/conversion/ft_atoll.c	/^t_ll				ft_atoll(char *str)$/;"	f
+ft_bpow	libft/math/ft_bpow.c	/^int		ft_bpow(int a, int n)$/;"	f
+ft_bzero	libft/memory/ft_bzero.c	/^void		ft_bzero(void *s, size_t n)$/;"	f
+ft_count_words	libft/strings/ft_strsplit.c	/^static size_t	ft_count_words(char const *s, char c)$/;"	f	file:
+ft_free_words	libft/strings/ft_strsplit.c	/^static void		ft_free_words(char **words, size_t i)$/;"	f	file:
+ft_get_word	libft/strings/ft_strsplit.c	/^static char		*ft_get_word(char *word, char c)$/;"	f	file:
+ft_get_words	libft/strings/ft_strsplit.c	/^static char		**ft_get_words(char *s, char c, size_t words_count)$/;"	f	file:
+ft_isalnum	libft/ctype/ft_isalnum.c	/^int	ft_isalnum(int c)$/;"	f
+ft_isalpha	libft/ctype/ft_isalpha.c	/^int		ft_isalpha(int c)$/;"	f
+ft_isascii	libft/ctype/ft_isascii.c	/^int	ft_isascii(int c)$/;"	f
+ft_isdigit	libft/ctype/ft_isdigit.c	/^int	ft_isdigit(int c)$/;"	f
+ft_isescape	libft/ctype/ft_isescape.c	/^int		ft_isescape(int c)$/;"	f
+ft_isnumber	libft/ctype/ft_isnumber.c	/^int			ft_isnumber(const char *str, size_t len)$/;"	f
+ft_isprint	libft/ctype/ft_isprint.c	/^int		ft_isprint(int c)$/;"	f
+ft_itoa	libft/conversion/ft_itoa.c	/^char		*ft_itoa(int n)$/;"	f
+ft_lltoa	libft/conversion/ft_lltoa.c	/^char		*ft_lltoa(t_ll n)$/;"	f
+ft_max	libft/math/ft_max.c	/^size_t	ft_max(size_t a, size_t b)$/;"	f
+ft_max_l	libft/math/ft_max.c	/^long	ft_max_l(long a, long b)$/;"	f
+ft_memalloc	libft/memory/ft_memalloc.c	/^void	*ft_memalloc(size_t size)$/;"	f
+ft_memccpy	libft/memory/ft_memccpy.c	/^void		*ft_memccpy(void *dst, const void *src, int c, size_t n)$/;"	f
+ft_memchr	libft/memory/ft_memchr.c	/^void		*ft_memchr(const void *s, int c, size_t n)$/;"	f
+ft_memcmp	libft/memory/ft_memcmp.c	/^int				ft_memcmp(const void *s1, const void *s2, size_t n)$/;"	f
+ft_memcpy	libft/memory/ft_memcpy.c	/^void		*ft_memcpy(void *dst, const void *src, size_t n)$/;"	f
+ft_memdel	libft/memory/ft_memdel.c	/^void	ft_memdel(void **ap)$/;"	f
+ft_memmove	libft/memory/ft_memmove.c	/^void		*ft_memmove(void *dst, const void *src, size_t len)$/;"	f
+ft_memset	libft/memory/ft_memset.c	/^void		*ft_memset(void *b, int c, size_t len)$/;"	f
+ft_memswap	libft/memory/ft_memswap.c	/^void		ft_memswap(void *a, void *b, size_t size)$/;"	f
+ft_min	libft/math/ft_min.c	/^size_t	ft_min(size_t a, size_t b)$/;"	f
+ft_min_l	libft/math/ft_min.c	/^long	ft_min_l(long a, long b)$/;"	f
+ft_putchar	libft/display/ft_putchar.c	/^void	ft_putchar(char c)$/;"	f
+ft_putchar_fd	libft/display/ft_putchar_fd.c	/^void	ft_putchar_fd(char c, int fd)$/;"	f
+ft_putendl	libft/display/ft_putendl.c	/^void	ft_putendl(char const *s)$/;"	f
+ft_putendl_fd	libft/display/ft_putendl_fd.c	/^void	ft_putendl_fd(char const *s, int fd)$/;"	f
+ft_putnbr	libft/display/ft_putnbr.c	/^void	ft_putnbr(int n)$/;"	f
+ft_putnbr_fd	libft/display/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/;"	f
+ft_putstr	libft/display/ft_putstr.c	/^void		ft_putstr(char const *s)$/;"	f
+ft_putstr_fd	libft/display/ft_putstr_fd.c	/^void	ft_putstr_fd(char const *s, int fd)$/;"	f
+ft_qsort	libft/vector/vector_qsort.c	/^static void	ft_qsort(t_vector *vector, size_t l, size_t r)$/;"	f	file:
+ft_random	libft/math/ft_random.c	/^t_ui			ft_random(t_ui rand_max)$/;"	f
+ft_strcat	libft/strings/ft_strcat.c	/^char		*ft_strcat(char *dest, const char *src)$/;"	f
+ft_strchr	libft/strings/ft_strchr.c	/^char	*ft_strchr(const char *str, int ch)$/;"	f
+ft_strchri	libft/strings/ft_strchri.c	/^int		ft_strchri(const char *s, int c)$/;"	f
+ft_strclr	libft/strings/ft_strclr.c	/^void	ft_strclr(char *s)$/;"	f
+ft_strcmp	libft/strings/ft_strcmp.c	/^int			ft_strcmp(const char *s1, const char *s2)$/;"	f
+ft_strcpy	libft/strings/ft_strcpy.c	/^char	*ft_strcpy(char *dst, const char *src)$/;"	f
+ft_strdup	libft/strings/ft_strdup.c	/^char	*ft_strdup(const char *str)$/;"	f
+ft_strequ	libft/strings/ft_strequ.c	/^int			ft_strequ(char const *s1, char const *s2)$/;"	f
+ft_striter	libft/strings/ft_striter.c	/^void		ft_striter(char *s, void (*f)(char *))$/;"	f
+ft_striteri	libft/strings/ft_striteri.c	/^void		ft_striteri(char *s, void (*f)(unsigned int, char *))$/;"	f
+ft_strjoin	libft/strings/ft_strjoin.c	/^char	*ft_strjoin(const char *str1, const char *str2)$/;"	f
+ft_strlcat	libft/strings/ft_strlcat.c	/^size_t		ft_strlcat(char *dst, const char *src, size_t size)$/;"	f
+ft_strlen	libft/strings/ft_strlen.c	/^size_t	ft_strlen(const char *str)$/;"	f
+ft_strmap	libft/strings/ft_strmap.c	/^char		*ft_strmap(char const *s, char (*f)(char))$/;"	f
+ft_strmapi	libft/strings/ft_strmapi.c	/^char		*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f
+ft_strncat	libft/strings/ft_strncat.c	/^char		*ft_strncat(char *dest, const char *src, size_t n)$/;"	f
+ft_strncmp	libft/strings/ft_strncmp.c	/^int			ft_strncmp(const char *s1, const char *s2, size_t n)$/;"	f
+ft_strncpy	libft/strings/ft_strncpy.c	/^char		*ft_strncpy(char *dst, const char *src, size_t len)$/;"	f
+ft_strnequ	libft/strings/ft_strnequ.c	/^int			ft_strnequ(char const *s1, char const *s2, size_t size)$/;"	f
+ft_strnew	libft/strings/ft_strnew.c	/^char		*ft_strnew(size_t size)$/;"	f
+ft_strnstr	libft/strings/ft_strnstr.c	/^char	*ft_strnstr(const char *haystack, const char *needle, size_t len)$/;"	f
+ft_strrchr	libft/strings/ft_strrchr.c	/^char		*ft_strrchr(const char *s, int c)$/;"	f
+ft_strsplit	libft/strings/ft_strsplit.c	/^char			**ft_strsplit(char const *s, char c)$/;"	f
+ft_strstr	libft/strings/ft_strstr.c	/^char		*ft_strstr(const char *haystack, const char *needle)$/;"	f
+ft_strsub	libft/strings/ft_strsub.c	/^char	*ft_strsub(char const *s, t_ui start, size_t len)$/;"	f
+ft_strtrim	libft/strings/ft_strtrim.c	/^char		*ft_strtrim(char const *s)$/;"	f
+ft_swap	libft/memory/ft_swap.c	/^void		ft_swap(void **a, void **b)$/;"	f
+ft_tolower	libft/conversion/ft_tolower.c	/^int		ft_tolower(int c)$/;"	f
+ft_toupper	libft/conversion/ft_toupper.c	/^int		ft_toupper(int c)$/;"	f
+ft_uitoa_base	libft/conversion/ft_uitoa_base.c	/^char	*ft_uitoa_base(t_ui value, int base, char reg)$/;"	f
+ft_ulltoa_base	libft/conversion/ft_ulltoa_base.c	/^char	*ft_ulltoa_base(t_ull value, int base, char reg)$/;"	f
+g_ants	includes/lemin.h	/^int						g_ants;$/;"	v
+g_mask01	libft/strings/ft_strlen.c	/^static const unsigned long g_mask01 = 0x0101010101010101;$/;"	v	file:
+g_mask80	libft/strings/ft_strlen.c	/^static const unsigned long g_mask80 = 0x8080808080808080;$/;"	v	file:
+g_next	libft/math/ft_random.c	/^static	t_ull	g_next = 1;$/;"	v	file:
+g_pivot	libft/vector/vector_get_median.c	/^int	g_pivot;$/;"	v
+g_pivot	libft/vector/vector_qsort.c	/^t_ll	g_pivot;$/;"	v
+g_tmp	libft/vector/vector_get_median.c	/^int	g_tmp;$/;"	v
+gc_alloc	libft/gc/gc.c	/^void			*gc_alloc(size_t size)$/;"	f
+gc_calloc	libft/gc/gc.c	/^void			*gc_calloc(size_t size)$/;"	f
+gc_free	libft/gc/gc_free.c	/^void		gc_free(void)$/;"	f
+gc_get_ptr_list	libft/gc/gc.c	/^inline void		*gc_get_ptr_list(void)$/;"	f
+gc_strdup	libft/gc/gc_strdup.c	/^char	*gc_strdup(const char *str)$/;"	f
+gc_strjoin	libft/gc/gc_strjoin.c	/^char	*gc_strjoin(const char *str1, const char *str2)$/;"	f
+gc_strnew	libft/gc/gc_strnew.c	/^char		*gc_strnew(size_t size)$/;"	f
+gc_strsplit	libft/gc/gc_strsplit.c	/^char		**gc_strsplit(char const *s, char c)$/;"	f
+gc_strsub	libft/gc/gc_strsub.c	/^char	*gc_strsub(char const *s, t_ui start, size_t len)$/;"	f
+get_ants	gui/set_paths_color.py	/^def get_ants(farm):$/;"	f
+get_end	gui/items.py	/^def get_end(farm, line):$/;"	f
+get_len	src/algorithm/bellman_ford.c	/^int		get_len(t_nodes *node)$/;"	f
+get_link	gui/items.py	/^def get_link(farm, line):$/;"	f
+get_move	gui/items.py	/^def get_move(farm, line):$/;"	f
+get_next_line	libft/gnl/get_next_line.c	/^int					get_next_line(const int fd, char **line)$/;"	f
+get_paths	gui/set_paths_color.py	/^def get_paths(farm, ant_squad, ants):$/;"	f
+get_paths_of_nodes	gui/set_paths_color.py	/^def get_paths_of_nodes(paths):$/;"	f
+get_room	gui/items.py	/^def get_room(farm, line):$/;"	f
+get_start	gui/items.py	/^def get_start(farm, line):$/;"	f
+in	includes/lemin.h	/^	t_uc				in;$/;"	m	struct:s_nodes
+increase_capacity	libft/vector/vector_reallocate.c	/^inline static size_t	increase_capacity(size_t size, size_t speed)$/;"	f	file:
+init_relations	src/input/parse_relations.c	/^inline static void	init_relations(t_relations *r_from, t_relations *r_to,$/;"	f	file:
+is_cross	src/algorithm/suurballe_2.c	/^int		is_cross(t_nodes *nodes)$/;"	f
+is_finish	includes/lemin.h	/^	t_uc				is_finish;$/;"	m	struct:s_nodes
+is_start	includes/lemin.h	/^	t_uc				is_start;$/;"	m	struct:s_nodes
+iter_way	src/output/choose_ways.c	/^void				iter_way(t_options *options, int *substract, int *current)$/;"	f
+lem_num	includes/lemin.h	/^	int					lem_num;$/;"	m	struct:s_nodes
+len_word	libft/gc/gc_strsplit.c	/^static int	len_word(char const *s, char c)$/;"	f	file:
+main	gui/main.py	/^def main():$/;"	f
+main	src/lemin.c	/^int				main(void)$/;"	f
+make_graph	gui/main.py	/^def make_graph(farm):$/;"	f
+make_squad	gui/main.py	/^def make_squad(data, settings, s_b_n):$/;"	f
+make_string	libft/conversion/ft_itoa.c	/^static char	*make_string(char *str, long num, int len)$/;"	f	file:
+mark_delete	src/algorithm/suurballe_2.c	/^void	mark_delete(t_nodes *first, t_nodes *second)$/;"	f
+name	includes/lemin.h	/^	char				*name;$/;"	m	struct:s_nodes
+need_delete	includes/lemin.h	/^	t_uc				need_delete;$/;"	m	struct:s_nodes
+need_delete	includes/lemin.h	/^	t_uc				need_delete;$/;"	m	struct:s_relations
+next	includes/lemin.h	/^	struct s_nodes		*next;$/;"	m	struct:s_nodes	typeref:struct:s_nodes::s_nodes
+next	includes/lemin.h	/^	struct s_options	*next;$/;"	m	struct:s_options	typeref:struct:s_options::s_options
+next	includes/lemin.h	/^	struct s_paths		*next;$/;"	m	struct:s_paths	typeref:struct:s_paths::s_paths
+next	includes/lemin.h	/^	struct s_relations	*next;$/;"	m	struct:s_relations	typeref:struct:s_relations::s_relations
+node_init	src/input/nodes.c	/^void		node_init(t_nodes **nodes, t_nodes *node,$/;"	f
+node_search	src/input/nodes.c	/^t_nodes		*node_search(t_nodes *head, char *name)$/;"	f
+nodes_back	src/input/nodes.c	/^void		nodes_back(t_nodes **list, t_nodes *node)$/;"	f
+nodes_count	includes/lemin.h	/^	int					nodes_count;$/;"	m	struct:s_paths
+nodes_front	src/input/nodes.c	/^void		nodes_front(t_nodes **list, t_nodes *node)$/;"	f
+nodes_insert	src/input/nodes.c	/^void		nodes_insert(t_nodes **list, t_nodes *node, size_t num)$/;"	f
+out	includes/lemin.h	/^	t_uc				out;$/;"	m	struct:s_nodes
+parse_ants	src/input/parse.c	/^void			parse_ants(t_nodes **nodes)$/;"	f
+parse_file	src/input/parse.c	/^void			parse_file(t_nodes **nodes)$/;"	f
+parse_section_node	src/input/parse_nodes.c	/^void			parse_section_node(char *line, t_nodes **nodes,$/;"	f
+parse_section_relation	src/input/parse_relations.c	/^void				parse_section_relation(char *line, t_nodes **nodes)$/;"	f
+parse_switch	src/input/parse.c	/^void			parse_switch(char *line, t_nodes **nodes,$/;"	f
+parse_title	src/input/parse.c	/^int				parse_title(char *line, t_nodes **nodes, t_title *title)$/;"	f
+path	includes/lemin.h	/^	struct s_nodes		**path;$/;"	m	struct:s_paths	typeref:struct:s_paths::s_nodes
+paths	includes/lemin.h	/^	struct s_paths		*paths;$/;"	m	struct:s_options	typeref:struct:s_options::s_paths
+paths_count	includes/lemin.h	/^	int					paths_count;$/;"	m	struct:s_options
+point	includes/lemin.h	/^	t_point				point;$/;"	m	struct:s_nodes
+prev	includes/lemin.h	/^	struct s_nodes		*prev;$/;"	m	struct:s_nodes	typeref:struct:s_nodes::s_nodes
+print	src/output/print_lems.c	/^void				print(int lem_num, char *name)$/;"	f
+print_error	src/input/error.c	/^inline void	print_error(t_nodes **nodes)$/;"	f
+print_lems	src/output/print_lems.c	/^void				print_lems(t_paths *ways)$/;"	f
+print_usage	gui/settings.py	/^def print_usage(args):$/;"	f
+read_file	gui/parser.py	/^def read_file(file):$/;"	f
+refresh	src/algorithm/refresh_graph_1.c	/^void	refresh(t_nodes *nodes)$/;"	f
+regex_compile	gui/parser.py	/^def regex_compile():$/;"	f
+relation_weight	includes/lemin.h	/^	int					relation_weight;$/;"	m	struct:s_relations
+relations	includes/lemin.h	/^	struct s_relations	*relations;$/;"	m	struct:s_nodes	typeref:struct:s_nodes::s_relations
+relations_back	src/input/relations.c	/^void			relations_back(t_nodes **nodes, t_nodes *node,$/;"	f
+remove_links_in_original_list	gui/set_paths_color.py	/^def remove_links_in_original_list(farm):$/;"	f
+remove_nodes_in_original_list	gui/set_paths_color.py	/^def remove_nodes_in_original_list(farm):$/;"	f
+s_nodes	includes/lemin.h	/^typedef struct			s_nodes$/;"	s
+s_options	includes/lemin.h	/^typedef struct			s_options$/;"	s
+s_paths	includes/lemin.h	/^typedef struct			s_paths$/;"	s
+s_point	includes/lemin.h	/^typedef struct			s_point$/;"	s
+s_relations	includes/lemin.h	/^typedef struct			s_relations$/;"	s
+s_vector	libft/includes/vector.h	/^typedef struct	s_vector {$/;"	s
+save_opt	src/algorithm/clean_memory.c	/^t_options	*save_opt(t_options *options)$/;"	f
+search	libft/vector/vector_get_median.c	/^static void		search(t_vector *v, t_vector *v1, t_vector *v2, t_vector *v3)$/;"	f	file:
+search_min_wights	src/algorithm/bellman_ford.c	/^void	search_min_wights(t_nodes *node)$/;"	f
+search_optimal	src/output/choose_ways.c	/^static t_options	*search_optimal(t_options *options, t_paths *optimal)$/;"	f	file:
+search_steps	src/output/print_lems.c	/^int					search_steps(t_paths *ways, int paths,$/;"	f
+set_journey	gui/class_ant.py	/^    def set_journey(self, pos, num_steps, farm):$/;"	m	class:Ant
+set_location	gui/class_ant.py	/^    def set_location(self, pos, farm):$/;"	m	class:Ant
+set_node_path	gui/class_ant.py	/^    def set_node_path(self, farm):$/;"	m	class:Ant
+set_paths_colors	gui/set_paths_color.py	/^def set_paths_colors(farm, ant_squad):$/;"	f
+set_speed	gui/settings.py	/^def set_speed(settings, args):$/;"	f
+size	libft/includes/vector.h	/^	size_t		size;$/;"	m	struct:s_vector
+stack_byte_capacity	libft/stack/stack_byte_capacity.c	/^inline size_t	stack_byte_capacity(const t_stack *stack)$/;"	f
+stack_byte_size	libft/stack/stack_byte_size.c	/^inline size_t	stack_byte_size(const t_stack *stack)$/;"	f
+stack_destroy	libft/stack/stack_destroy.c	/^inline int	stack_destroy(t_stack *stack)$/;"	f
+stack_get_element	libft/stack/stack_get_element.c	/^inline void	*stack_get_element(t_stack *stack, size_t index)$/;"	f
+stack_init	libft/stack/stack_init.c	/^inline int	stack_init(t_stack *stack, size_t capacity, size_t element_size)$/;"	f
+stack_is_empty	libft/stack/stack_is_empty.c	/^inline int	stack_is_empty(const t_stack *stack)$/;"	f
+stack_is_initialized	libft/stack/stack_is_initialized.c	/^inline int	stack_is_initialized(const t_stack *stack)$/;"	f
+stack_move	libft/stack/stack_move.c	/^inline int	stack_move(t_stack *dst, t_stack *src)$/;"	f
+stack_move_array	libft/stack/stack_move_array.c	/^inline int	stack_move_array(t_stack *stack, void **ar, size_t size)$/;"	f
+stack_move_data	libft/stack/stack_move_data.c	/^inline int	stack_move_data(t_stack *stack, void **data)$/;"	f
+stack_pop	libft/stack/stack_pop.c	/^inline void	*stack_pop(t_stack *stack)$/;"	f
+stack_push	libft/stack/stack_push.c	/^inline int	stack_push(t_stack *stack, void *data)$/;"	f
+stack_second	libft/stack/stack_second.c	/^inline void	*stack_second(t_stack *stack)$/;"	f
+stack_top	libft/stack/stack_top.c	/^inline void	*stack_top(t_stack *stack)$/;"	f
+start	includes/lemin.h	/^	struct s_nodes		*start;$/;"	m	struct:s_nodes	typeref:struct:s_nodes::s_nodes
+start	includes/lemin.h	/^	struct s_options	*start;$/;"	m	struct:s_options	typeref:struct:s_options::s_options
+start	includes/lemin.h	/^	struct s_paths		*start;$/;"	m	struct:s_paths	typeref:struct:s_paths::s_paths
+start	includes/lemin.h	/^	struct s_relations	*start;$/;"	m	struct:s_relations	typeref:struct:s_relations::s_relations
+suurballe	src/algorithm/suurballe_1.c	/^void	suurballe(t_nodes *nodes, t_options *options)$/;"	f
+t_cuc	libft/includes/libft.h	/^typedef const unsigned char	t_cuc;$/;"	t
+t_l	libft/includes/libft.h	/^typedef long				t_l;$/;"	t
+t_ld	libft/includes/libft.h	/^typedef long double			t_ld;$/;"	t
+t_ll	libft/includes/libft.h	/^typedef long long			t_ll;$/;"	t
+t_nodes	includes/lemin.h	/^}						t_nodes;$/;"	t	typeref:struct:s_nodes
+t_options	includes/lemin.h	/^}						t_options;$/;"	t	typeref:struct:s_options
+t_paths	includes/lemin.h	/^}						t_paths;$/;"	t	typeref:struct:s_paths
+t_point	includes/lemin.h	/^}						t_point;$/;"	t	typeref:struct:s_point
+t_relations	includes/lemin.h	/^}						t_relations;$/;"	t	typeref:struct:s_relations
+t_si	libft/includes/libft.h	/^typedef short int			t_si;$/;"	t
+t_stack	libft/includes/stack.h	/^typedef t_vector	t_stack;$/;"	t
+t_title	includes/lemin.h	/^}						t_title;$/;"	t	typeref:enum:e_title
+t_uc	libft/includes/libft.h	/^typedef unsigned char		t_uc;$/;"	t
+t_ui	libft/includes/libft.h	/^typedef unsigned int		t_ui;$/;"	t
+t_ul	libft/includes/libft.h	/^typedef unsigned long		t_ul;$/;"	t
+t_ull	libft/includes/libft.h	/^typedef unsigned long long	t_ull;$/;"	t
+t_usi	libft/includes/libft.h	/^typedef unsigned short int	t_usi;$/;"	t
+t_vector	libft/includes/vector.h	/^}				t_vector;$/;"	t	typeref:struct:s_vector
+tmp	includes/lemin.h	/^	struct s_nodes		*tmp;$/;"	m	struct:s_nodes	typeref:struct:s_nodes::s_nodes
+tmp_clean_memory	src/input/parse_relations.c	/^static void			tmp_clean_memory(t_relations *r_from, t_relations *r_to,$/;"	f	file:
+to	includes/lemin.h	/^	struct s_nodes		*to;$/;"	m	struct:s_relations	typeref:struct:s_relations::s_nodes
+update_var	src/output/print_lems.c	/^inline static void	update_var(int *paths, int *is_empty, int *substract)$/;"	f	file:
+usage	gui/usage.py	/^def usage():$/;"	f
+valid_line_node	src/input/validation.c	/^char			**valid_line_node(char *line)$/;"	f
+valid_line_relation	src/input/validation.c	/^char			**valid_line_relation(char *line, t_nodes *nodes)$/;"	f
+valid_node_cmp	src/input/validation.c	/^int				valid_node_cmp(t_nodes *head, t_nodes *node)$/;"	f
+valid_start_end	src/input/validation.c	/^int				valid_start_end(t_nodes *nodes)$/;"	f
+vector_byte_capacity	libft/vector/vector_byte_capacity.c	/^inline size_t	vector_byte_capacity(const t_vector *vector)$/;"	f
+vector_byte_size	libft/vector/vector_byte_size.c	/^inline size_t		vector_byte_size(const t_vector *vector)$/;"	f
+vector_chr	libft/vector/vector_chr.c	/^void			*vector_chr(t_vector *vector, size_t offset, int c)$/;"	f
+vector_clear	libft/vector/vector_clear.c	/^int		vector_clear(t_vector *vector)$/;"	f
+vector_copy	libft/vector/vector_copy.c	/^int		vector_copy(t_vector *dst, const t_vector *src)$/;"	f
+vector_destroy	libft/vector/vector_destroy.c	/^int		vector_destroy(t_vector *vector)$/;"	f
+vector_destroys	libft/vector/vector_get_median.c	/^static void		vector_destroys(t_vector *v1, t_vector *v2, t_vector *v3)$/;"	f	file:
+vector_erase	libft/vector/vector_erase.c	/^int		vector_erase(t_vector *vector, size_t index)$/;"	f
+vector_free_size	libft/vector/vector_free_size.c	/^inline size_t	vector_free_size(const t_vector *vector)$/;"	f
+vector_get_element	libft/vector/vector_get_element.c	/^inline void	*vector_get_element(t_vector *vector, size_t index)$/;"	f
+vector_get_maxi	libft/vector/vector_get_maxi.c	/^size_t		vector_get_maxi(t_vector *vector)$/;"	f
+vector_get_median	libft/vector/vector_get_median.c	/^int				vector_get_median(t_vector *v, size_t med)$/;"	f
+vector_init	libft/vector/vector_init.c	/^int		vector_init(t_vector *vector, size_t capacity, size_t element_size)$/;"	f
+vector_inits	libft/vector/vector_get_median.c	/^static void		vector_inits(t_vector *v1, t_vector *v2, t_vector *v3)$/;"	f	file:
+vector_insert_data	libft/vector/vector_insert_data.c	/^int		vector_insert_data(t_vector *vector, size_t index, void *element)$/;"	f
+vector_is_empty	libft/vector/vector_is_empty.c	/^inline int		vector_is_empty(const t_vector *vector)$/;"	f
+vector_is_initialized	libft/vector/vector_is_initialized.c	/^inline int	vector_is_initialized(const t_vector *vector)$/;"	f
+vector_is_sorted	libft/vector/vector_is_sorted.c	/^int			vector_is_sorted(t_vector *vector)$/;"	f
+vector_is_unique	libft/vector/vector_is_unique.c	/^int			vector_is_unique(t_vector *vector)$/;"	f
+vector_memmove	libft/vector/vector_memmove.c	/^int	vector_memmove(t_vector *vector, void *ptr, size_t len)$/;"	f
+vector_move	libft/vector/vector_move.c	/^int		vector_move(t_vector *dst, t_vector *src)$/;"	f
+vector_move_array	libft/vector/vector_move_array.c	/^int	vector_move_array(t_vector *vector, void **ar, size_t size)$/;"	f
+vector_move_back_array	libft/vector/vector_move_back_array.c	/^int		vector_move_back_array(t_vector *vector, void **ar, size_t size)$/;"	f
+vector_move_back_data	libft/vector/vector_move_back_data.c	/^int		vector_move_back_data(t_vector *vector, void **data)$/;"	f
+vector_offset	libft/vector/vector_offset.c	/^void				vector_offset(t_vector *vector, size_t index,$/;"	f
+vector_pop_back	libft/vector/vector_pop_back.c	/^void		*vector_pop_back(t_vector *vector)$/;"	f
+vector_pop_front	libft/vector/vector_pop_front.c	/^void		*vector_pop_front(t_vector *vector)$/;"	f
+vector_push_back_array	libft/vector/vector_push_back_array.c	/^int		vector_push_back_array(t_vector *vector, void *ar, size_t size)$/;"	f
+vector_push_back_data	libft/vector/vector_push_back_data.c	/^int		vector_push_back_data(t_vector *vector, void *data)$/;"	f
+vector_push_front_data	libft/vector/vector_push_front_data.c	/^int		vector_push_front_data(t_vector *vector, void *data)$/;"	f
+vector_qsort	libft/vector/vector_qsort.c	/^int			vector_qsort(t_vector *vector)$/;"	f
+vector_reallocate	libft/vector/vector_reallocate.c	/^int						vector_reallocate(t_vector *vector)$/;"	f
+vector_resize	libft/vector/vector_resize.c	/^int		vector_resize(t_vector *vector, size_t new_size)$/;"	f
+vector_set_element	libft/vector/vector_set_element.c	/^inline int	vector_set_element(t_vector *vector, void *data, size_t index)$/;"	f
+weight	includes/lemin.h	/^	int					weight;$/;"	m	struct:s_nodes
+x	includes/lemin.h	/^	int					x;$/;"	m	struct:s_point
+y	includes/lemin.h	/^	int					y;$/;"	m	struct:s_point

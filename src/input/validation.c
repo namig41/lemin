@@ -46,13 +46,25 @@ char			**valid_line_relation(char *line, t_nodes *nodes)
 int				valid_start_end(t_nodes *nodes)
 {
 	t_nodes *head;
+	t_nodes *prev;
+	t_nodes *tmp;
 
 	head = nodes;
 	if (!nodes->relations)
 		return (1);
 	while (nodes->next)
 	{
+		if (!nodes->relations)
+		{
+			tmp = nodes;
+			nodes = nodes->next;
+			prev->next = nodes;
+			ft_memdel((void **)&tmp->name);
+			ft_memdel((void **)&tmp);
+			continue ;
+		}
 		nodes->start = head;
+		prev = nodes;
 		nodes = nodes->next;
 	}
 	if (!nodes->relations)

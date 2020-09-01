@@ -29,6 +29,7 @@ void			parse_section_node(char *line, t_nodes **nodes,
 	array_clear(w_node);
 	if (valid_node_cmp(*nodes, node))
 	{
+		ft_memdel((void **)&node->name);
 		ft_memdel((void **)&node);
 		print_error(nodes);
 	}
