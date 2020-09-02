@@ -6,7 +6,7 @@
 /*   By: lcarmelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/07 13:17:44 by lcarmelo          #+#    #+#             */
-/*   Updated: 2020/08/07 13:17:46 by lcarmelo         ###   ########.fr       */
+/*   Updated: 2020/09/02 13:15:44 by lcarmelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,10 @@ void			parse_section_node(char *line, t_nodes **nodes,
 	char		**w_node;
 	t_nodes		*node;
 
+	if (!(w_node = valid_line_node(line)))
+		print_error(nodes);
 	if (!(node = (t_nodes *)ft_memalloc(sizeof(t_nodes))))
 		print_error(nodes);
-	if (!(w_node = valid_line_node(line)))
-	{
-		ft_memdel((void **)&node);
-		print_error(nodes);
-	}
 	node_init(nodes, node, w_node, title);
 	array_clear(w_node);
 	if (valid_node_cmp(*nodes, node))

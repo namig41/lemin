@@ -6,7 +6,7 @@
 /*   By: lcarmelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/07 13:17:33 by lcarmelo          #+#    #+#             */
-/*   Updated: 2020/08/07 13:17:34 by lcarmelo         ###   ########.fr       */
+/*   Updated: 2020/09/02 13:11:43 by lcarmelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,6 @@ void		nodes_back(t_nodes **list, t_nodes *node)
 void		node_init(t_nodes **nodes, t_nodes *node,
 							char *w_node[], t_title *title)
 {
-	if (*w_node[N_NAME] == 'L' || *w_node[N_NAME] == '#')
-	{
-		ft_memdel((void **)&node);
-		array_clear(w_node);
-		print_error(nodes);
-	}
 	node->name = ft_strdup(w_node[N_NAME]);
 	node->point.x = ft_atoi(w_node[N_X]);
 	node->point.y = ft_atoi(w_node[N_Y]);

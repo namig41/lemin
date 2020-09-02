@@ -6,7 +6,7 @@
 /*   By: lcarmelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/07 14:24:05 by lcarmelo          #+#    #+#             */
-/*   Updated: 2020/08/30 12:47:15 by lcarmelo         ###   ########.fr       */
+/*   Updated: 2020/09/02 13:34:51 by lcarmelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ int				parse_title(char *line, t_nodes **nodes, t_title *title)
 		*title = TITLE_END;
 	else if (*line == COMMENT)
 	{
-		if ((tmp = valid_line_node(line + 1)) ||
-				(tmp = valid_line_relation(line + 1, *nodes)))
+		if ((line[1] != 'L' && (tmp = valid_line_node(line + 1))) ||
+			(tmp = valid_line_relation(line + 1, *nodes)))
 		{
 			array_clear(tmp);
 			print_error(nodes);

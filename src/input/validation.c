@@ -6,18 +6,24 @@
 /*   By: lcarmelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/07 14:19:58 by lcarmelo          #+#    #+#             */
-/*   Updated: 2020/08/07 14:20:00 by lcarmelo         ###   ########.fr       */
+/*   Updated: 2020/09/02 13:26:32 by lcarmelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
+
+static void		clean_node(t_nodes *node)
+{
+	ft_memdel((void **)&node->name);
+	ft_memdel((void **)&node);
+}
 
 char			**valid_line_node(char *line)
 {
 	char		**w_node;
 
 	w_node = ft_strsplit(line, N_SEP);
-	if (array_size(w_node) != N_SIZE ||
+	if (array_size(w_node) != N_SIZE || *w_node[0] == 'L' ||
 		!ft_isnumber(w_node[N_X], ft_strlen(w_node[N_X])) ||
 		!ft_isnumber(w_node[N_Y], ft_strlen(w_node[N_Y])))
 	{
@@ -59,8 +65,7 @@ int				valid_start_end(t_nodes *nodes)
 			tmp = nodes;
 			nodes = nodes->next;
 			prev->next = nodes;
-			ft_memdel((void **)&tmp->name);
-			ft_memdel((void **)&tmp);
+			clean_node(tmp);
 			continue ;
 		}
 		nodes->start = head;
