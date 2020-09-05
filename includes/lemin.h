@@ -6,7 +6,7 @@
 /*   By: lcarmelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 12:36:03 by lcarmelo          #+#    #+#             */
-/*   Updated: 2020/08/30 12:36:14 by lcarmelo         ###   ########.fr       */
+/*   Updated: 2020/09/05 18:14:13 by lcarmelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 # include "libft.h"
 # include "get_next_line.h"
 
-# define START 			"##start"
-# define END 			"##end"
-# define COMMENT 		'#'
+# define T_START 		"##start"
+# define T_END 			"##end"
+# define T_COMMENT 		'#'
 
 # define ERR 			"ERROR"
 
@@ -41,8 +41,8 @@
 
 typedef enum			e_title
 {
-	TITLE_START,
-	TITLE_END,
+	START,
+	END,
 	NODE,
 	RELATION
 }						t_title;

@@ -6,7 +6,7 @@
 /*   By: lcarmelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/07 13:17:48 by lcarmelo          #+#    #+#             */
-/*   Updated: 2020/08/07 13:17:49 by lcarmelo         ###   ########.fr       */
+/*   Updated: 2020/09/05 18:23:03 by lcarmelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,23 @@
 void			relations_back(t_nodes **nodes, t_nodes *node,
 								t_relations *relation)
 {
-	t_relations *relations;
 	t_relations *head;
 
-	relations = node->relations;
-	if (!relations)
+	if (!node->relations)
 	{
 		node->relations = relation;
 		return ;
 	}
-	head = relations;
-	while (head->next)
+	head = node->relations;
+	while (head)
 	{
 		if (ft_strequ(head->to->name, relation->to->name))
 			print_error(nodes);
+		if (!head->next)
+		{
+			head->next = relation;
+			return ;
+		}
 		head = head->next;
 	}
-	head->next = relation;
 }

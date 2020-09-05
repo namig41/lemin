@@ -6,7 +6,7 @@
 /*   By: lcarmelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/07 13:17:33 by lcarmelo          #+#    #+#             */
-/*   Updated: 2020/09/02 13:11:43 by lcarmelo         ###   ########.fr       */
+/*   Updated: 2020/09/05 18:12:39 by lcarmelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,12 @@ void		node_init(t_nodes **nodes, t_nodes *node,
 	node->name = ft_strdup(w_node[N_NAME]);
 	node->point.x = ft_atoi(w_node[N_X]);
 	node->point.y = ft_atoi(w_node[N_Y]);
-	if (*title == TITLE_START)
+	if (*title == START)
 	{
 		node->is_start = 1;
 		node->weight = 0;
 	}
-	else if (*title == TITLE_END)
+	else if (*title == END)
 	{
 		node->is_finish = 1;
 		node->weight = INT_MAX;

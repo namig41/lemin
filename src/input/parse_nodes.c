@@ -6,7 +6,7 @@
 /*   By: lcarmelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/07 13:17:44 by lcarmelo          #+#    #+#             */
-/*   Updated: 2020/09/02 13:15:44 by lcarmelo         ###   ########.fr       */
+/*   Updated: 2020/09/05 18:13:04 by lcarmelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ void			parse_section_node(char *line, t_nodes **nodes,
 		ft_memdel((void **)&node);
 		print_error(nodes);
 	}
-	if (*title == TITLE_START)
+	if (*title == START)
 		nodes_front(nodes, node);
-	else if (*title == TITLE_END)
+	else if (*title == END)
 		nodes_back(nodes, node);
 	else
 		nodes_insert(nodes, node, *f & F_START);

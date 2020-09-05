@@ -6,7 +6,7 @@
 /*   By: lcarmelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/07 14:24:05 by lcarmelo          #+#    #+#             */
-/*   Updated: 2020/09/02 13:34:51 by lcarmelo         ###   ########.fr       */
+/*   Updated: 2020/09/05 18:28:38 by lcarmelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ int				parse_title(char *line, t_nodes **nodes, t_title *title)
 {
 	char **tmp;
 
-	if (ft_strequ(line, START))
-		*title = TITLE_START;
-	else if (ft_strequ(line, END))
-		*title = TITLE_END;
-	else if (*line == COMMENT)
+	if (ft_strequ(line, T_START))
+		*title = START;
+	else if (ft_strequ(line, T_END))
+		*title = END;
+	else if (*line == T_COMMENT)
 	{
 		if ((line[1] != 'L' && (tmp = valid_line_node(line + 1))) ||
 			(tmp = valid_line_relation(line + 1, *nodes)))
@@ -69,7 +69,6 @@ int				parse_title(char *line, t_nodes **nodes, t_title *title)
 			array_clear(tmp);
 			print_error(nodes);
 		}
-		*title = NODE;
 	}
 	else if (ft_strchr(line, R_SEP))
 	{
@@ -84,7 +83,7 @@ int				parse_title(char *line, t_nodes **nodes, t_title *title)
 void			parse_switch(char *line, t_nodes **nodes,
 								t_title *title, t_uc *f)
 {
-	if (*title == TITLE_START)
+	if (*title == START)
 	{
 		if (*f & F_START)
 			print_error(nodes);
@@ -92,7 +91,7 @@ void			parse_switch(char *line, t_nodes **nodes,
 		*title = NODE;
 		*f |= F_START;
 	}
-	else if (*title == TITLE_END)
+	else if (*title == END)
 	{
 		if (*f & F_END)
 			print_error(nodes);
